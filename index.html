@@ -124,9 +124,43 @@
     @media (max-width:700px){#lead-form{grid-template-columns:1fr} #lead-form .cta{grid-column:span 1}}
     .is-invalid{border-color:#ef4444!important; box-shadow:0 0 0 3px rgba(239,68,68,.2)!important}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-  </style>
+  
+/* ===== PRUEBA TEMA CLARO (override no destructivo) ===== */
+body.light{ --bg:#f6f8ff; --panel:#ffffff; --text:#0f172a; --muted:#475569; }
+body.light header{ background:linear-gradient(to bottom, rgba(255,255,255,.92), rgba(255,255,255,.72)); border-bottom:1px solid rgba(15,23,42,.10) }
+body.light .lang-switch{ border:1px solid rgba(15,23,42,.18); background:rgba(15,23,42,.04); color:var(--text) }
+body.light .section-title{ border:1px solid rgba(15,23,42,.18); background:rgba(15,23,42,.04) }
+body.light .card{ border:1px solid rgba(15,23,42,.10); background:linear-gradient(180deg, rgba(15,23,42,.04), rgba(15,23,42,.02)) }
+body.light .icon,
+body.light .hero-media,
+body.light .about .body,
+body.light .faq-item,
+body.light footer{ border-color:rgba(15,23,42,.10) !important }
+body.light .about .body{ background:#fff }
+body.light .faq-item{ background:rgba(15,23,42,.04) }
+body.light #lead-form input,
+body.light #lead-form textarea,
+body.light #lead-form select{ background:rgba(15,23,42,.04); border:1px solid rgba(15,23,42,.18); color:var(--text) }
+body.light #lead-form input:focus,
+body.light #lead-form textarea:focus,
+body.light #lead-form select:focus{ border-color: color-mix(in srgb, var(--brand) 55%, var(--text)); box-shadow:0 0 0 4px color-mix(in srgb, var(--brand) 15%, transparent) }
+body.light .btn.secondary{ border:1px solid rgba(15,23,42,.18) }
+body.light .chip{ color: color-mix(in srgb, var(--text) 70%, transparent); border:1px dashed rgba(15,23,42,.18) }
+
+/* === Why tiles — items cuadrados con imagen de fondo por item === */
+.why-tiles{gap:16px}
+.why-tiles .tile-square{position:relative;aspect-ratio:1/1;border-radius:16px;overflow:hidden;display:flex;align-items:flex-end;justify-content:flex-start;padding:14px;transition:transform .25s ease,border-color .2s ease;cursor:default;isolation:isolate;border:1px solid rgba(255,255,255,.10)}
+.why-tiles .tile-square::before{content:"";position:absolute;inset:0;background:var(--bg, none) center/cover no-repeat;transform:scale(1.02);transition:transform .25s ease;z-index:0}
+.why-tiles .tile-square::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.0) 40%, rgba(0,0,0,.55) 100%);z-index:0}
+.why-tiles .tile-square:hover{transform:translateY(-4px)}
+.why-tiles .tile-square:hover::before{transform:scale(1.06)}
+.why-tiles .tile-square h3{position:relative;z-index:1;margin:0;display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(11,16,32,.35);font-size:15px;font-weight:700;color:#fff}
+body.light .why-tiles .tile-square{border-color:rgba(15,23,42,.12)}
+body.light .why-tiles .tile-square::after{background:linear-gradient(180deg, rgba(255,255,255,.0) 40%, rgba(255,255,255,.85) 100%)}
+body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background:rgba(255,255,255,.75);color:#0f172a}
+</style>
 </head>
-<body>
+<body class="light">
   <header class="nav">
     <div class="container">
       <a href="#" class="logo brand" data-i18n="brand">Core Edge Solutions</a>
@@ -139,6 +173,7 @@
         <a href="#contacto" data-i18n="nav.contact">Contacto</a>
       </nav>
       <div class="spacer"></div>
+      <button id="theme-toggle" class="lang-switch" aria-live="polite" title="Cambiar tema" aria-pressed="false">☀️ / 🌙</button>
       <button id="lang-toggle" class="lang-switch" aria-live="polite" title="Change language">ES / EN</button>
     </div>
   </header>
@@ -259,23 +294,20 @@
   <section id="ventajas" class="why-us">
     <div class="container">
       <div class="section-head">
-        <h2 class="section-title reveal" data-anim="up" data-i18n="why.h2">Por qué elegirnos</h2>
+        <h2 class="section-title reveal" data-anim="up">Por qué elegirnos</h2>
       </div>
-      <div class="grid grid-3">
-        <div class="card reveal stack-lg" data-anim="zoom" data-tilt>
-          <h3 data-i18n="why.q1">Código de calidad</h3>
-          <p>Menos errores en producción y mayor mantenibilidad con Clean Architecture, SOLID y testing.</p>
-          <ul class="list"><li>Cobertura y tests de contrato</li><li>Guías de estilo y linters</li><li>Control de deuda técnica</li></ul>
+      <div class="grid grid-4 why-tiles">
+        <div class="tile-square reveal" data-anim="zoom" data-tilt style="--bg:url('images/why-senior.jpg')">
+          <h3>Equipo senior 100%</h3>
         </div>
-        <div class="card reveal stack-lg" data-anim="zoom" data-tilt>
-          <h3 data-i18n="why.q2">Ahorro de tiempo</h3>
-          <p>Aceleradores propios para reducir el time‑to‑value y mantener el foco en lo importante.</p>
-          <ul class="list"><li>Starters reutilizables</li><li>Despliegues automatizados</li><li>Roadmaps claros</li></ul>
+        <div class="tile-square reveal" data-anim="zoom" data-tilt style="--bg:url('images/why-speed.jpg')">
+          <h3>Inicio rápido</h3>
         </div>
-        <div class="card reveal stack-lg" data-anim="zoom" data-tilt>
-          <h3 data-i18n="why.q3">Escalabilidad & seguridad</h3>
-          <p>Arquitecturas listas para crecer con autoscaling, observabilidad y seguridad por diseño.</p>
-          <ul class="list"><li>Hardening y secretos</li><li>Monitoreo y alertas</li><li>Resiliencia y DR</li></ul>
+        <div class="tile-square reveal" data-anim="zoom" data-tilt style="--bg:url('images/why-transparency.jpg')">
+          <h3>Transparencia y previsibilidad</h3>
+        </div>
+        <div class="tile-square reveal" data-anim="zoom" data-tilt style="--bg:url('images/why-ownership.jpg')">
+          <h3>Propiedad total (sin lock‑in)</h3>
         </div>
       </div>
     </div>
@@ -287,7 +319,7 @@
       <div class="section-head">
         <h2 class="section-title reveal" data-anim="up">Proceso</h2>
       </div>
-      <div class="process-grid grid grid-2">
+      <div class="process-grid grid">
         <div>
           <div class="timeline">
             <div class="step reveal" data-anim="left" data-tilt><div class="dot">1</div><div><h4 data-i18n="process.s1">Descubrimiento</h4><p>1 semana · Llamada inicial y objetivos.</p><ul class="list"><li>Stakeholders y restricciones</li><li>Hipótesis y métricas de éxito</li></ul></div></div>
@@ -297,9 +329,7 @@
             <div class="step reveal" data-anim="left" data-tilt><div class="dot">5</div><div><h4 data-i18n="process.s5">Entrega & soporte</h4><p>Lanzamiento, documentación y soporte continuo.</p><ul class="list"><li>Handover y formación</li><li>Monitoreo y evolución</li></ul></div></div>
           </div>
         </div>
-        <figure class="process-illustration reveal" data-anim="zoom">
-          <img src="images/process-vertical.jpg" alt="Ilustración vertical del proceso — flujo de trabajo" loading="lazy"/>
-        </figure>
+        
       </div>
     </div>
   </section>
@@ -379,6 +409,31 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle (light/dark)
+    (function(){
+      var btn = document.getElementById('theme-toggle');
+      if(!btn) return;
+      function apply(theme){
+        var b = document.body.classList;
+        if(theme==='light'){ b.add('light'); } else { b.remove('light'); }
+        localStorage.setItem('theme', theme);
+        btn.textContent = theme==='light' ? '🌙' : '☀️';
+        btn.setAttribute('aria-label', theme==='light' ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro');
+        btn.setAttribute('aria-pressed', theme==='light' ? 'true' : 'false');
+      }
+      var saved = localStorage.getItem('theme');
+      if(saved==='light' || saved==='dark'){ apply(saved); }
+      else {
+        if(document.body.classList.contains('light')) apply('light');
+        else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) apply('light');
+        else apply('dark');
+      }
+      btn.addEventListener('click', function(){
+        var cur = document.body.classList.contains('light') ? 'light' : 'dark';
+        apply(cur==='light' ? 'dark' : 'light');
+      });
+    })();
 
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ const el = e.target; const delay = el.getAttribute('data-delay'); if(delay){ el.style.setProperty('--d', delay); } el.classList.add('in'); io.unobserve(el);} });
