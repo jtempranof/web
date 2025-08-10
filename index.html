@@ -13,8 +13,7 @@
     *{box-sizing:border-box}
     html,body{margin:0;height:100%;scroll-behavior:smooth}
     body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:
-      radial-gradient(1100px 700px at 85% -10%, rgba(139,92,246,.10),transparent 60%),
-      radial-gradient(1000px 600px at -10% -20%, rgba(90,169,255,.10),transparent 60%),
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="7"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.03"/></svg>') 0 0/160px 160px repeat,
       var(--bg);color:var(--text)}
     img{max-width:100%;display:block}
     a{color:var(--brand);text-decoration:none}
@@ -172,8 +171,8 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
   .grid{gap:14px}
   .card{padding:16px;margin-top:12px;margin-bottom:8px}
   .about .body{padding:18px}
-  .hero .container{padding:28px 0;gap:18px}
-  .hero .stack-lg{margin-top:14px}
+  .hero .container{padding:36px 18px;gap:16px}
+  .hero .stack-lg{margin-top:16px;display:grid;grid-template-columns:1fr;gap:12px}
   .faq .grid{gap:14px;margin-top:12px}
   .faq-item{padding:12px 14px}
   .why-tiles{gap:12px}
@@ -181,8 +180,15 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
   .why-tiles .tile-square h3{font-size:14px;padding:5px 10px}
   .why-tiles .tile-hover{left:8px;right:8px;bottom:8px;padding:8px 10px;font-size:12.5px}
   #lead-form{gap:12px}
-  #lead-form .cta{width:100%;}
+  .hero .btn, .hero .cta, #lead-form .cta{width:100%;}
   footer{padding:20px 0}
+}
+
+/* === Full-bleed FAQ & Contact en móvil === */
+@media (max-width:640px){
+  #faq .container.grid{margin-left:-14px;margin-right:-14px}
+  #contacto .grid{margin-left:-14px;margin-right:-14px}
+  #faq .faq-item, #contacto .card, #contacto #lead-form{border-radius:0}
 }
 </style>
 </head>
@@ -352,14 +358,63 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
       <div class="process-grid grid">
         <div>
           <div class="timeline">
-            <div class="step reveal" data-anim="left" data-tilt><div class="dot">1</div><div><h4 data-i18n="process.s1">Descubrimiento</h4><p>1 semana · Llamada inicial y objetivos.</p><ul class="list"><li>Stakeholders y restricciones</li><li>Hipótesis y métricas de éxito</li></ul></div></div>
-            <div class="step reveal" data-anim="left" data-tilt><div class="dot">2</div><div><h4 data-i18n="process.s2">Propuesta</h4><p>3–5 días · Alcance, roadmap y presupuesto.</p><ul class="list"><li>Arquitectura inicial</li><li>Riesgos y mitigaciones</li></ul></div></div>
-            <div class="step reveal" data-anim="left" data-tilt><div class="dot">3</div><div><h4 data-i18n="process.s3">Construcción</h4><p>Iteraciones cortas con demos.</p><ul class="list"><li>Sprints de 1–2 semanas</li><li>Revisiones de código y QA</li></ul></div></div>
-            <div class="step reveal" data-anim="left" data-tilt><div class="dot">4</div><div><h4 data-i18n="process.s4">Calidad</h4><p>~1 semana · Performance y seguridad.</p><ul class="list"><li>Pruebas funcionales y carga</li><li>Checklist de release y rollback</li></ul></div></div>
-            <div class="step reveal" data-anim="left" data-tilt><div class="dot">5</div><div><h4 data-i18n="process.s5">Entrega & soporte</h4><p>Lanzamiento, documentación y soporte continuo.</p><ul class="list"><li>Handover y formación</li><li>Monitoreo y evolución</li></ul></div></div>
+            <div class="step reveal" data-anim="left" data-tilt>
+              <div class="dot">1</div>
+              <div>
+                <h4 data-i18n="process.s1">Descubrimiento</h4>
+                <p>Llamada inicial y objetivos.</p>
+                <ul class="list">
+                  <li>Stakeholders y restricciones</li>
+                  <li>Hipótesis y métricas de éxito</li>
+                </ul>
+              </div>
+            </div>
+            <div class="step reveal" data-anim="left" data-tilt>
+              <div class="dot">2</div>
+              <div>
+                <h4 data-i18n="process.s2">Propuesta</h4>
+                <p>Alcance, roadmap y presupuesto.</p>
+                <ul class="list">
+                  <li>Arquitectura inicial</li>
+                  <li>Riesgos y mitigaciones</li>
+                </ul>
+              </div>
+            </div>
+            <div class="step reveal" data-anim="left" data-tilt>
+              <div class="dot">3</div>
+              <div>
+                <h4 data-i18n="process.s3">Construcción</h4>
+                <p>Iteraciones cortas con demos.</p>
+                <ul class="list">
+                  <li>Sprints cortos</li>
+                  <li>Revisiones de código y QA</li>
+                </ul>
+              </div>
+            </div>
+            <div class="step reveal" data-anim="left" data-tilt>
+              <div class="dot">4</div>
+              <div>
+                <h4 data-i18n="process.s4">Calidad</h4>
+                <p>Performance y seguridad.</p>
+                <ul class="list">
+                  <li>Pruebas funcionales y carga</li>
+                  <li>Checklist de release y rollback</li>
+                </ul>
+              </div>
+            </div>
+            <div class="step reveal" data-anim="left" data-tilt>
+              <div class="dot">5</div>
+              <div>
+                <h4 data-i18n="process.s5">Entrega & soporte</h4>
+                <p>Lanzamiento, documentación y soporte continuo.</p>
+                <ul class="list">
+                  <li>Handover y formación</li>
+                  <li>Monitoreo y evolución</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-        
       </div>
     </div>
   </section>
