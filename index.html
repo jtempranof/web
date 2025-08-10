@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Core Edge Solutions — Backend, IA/ML, Automatización y MVPs</title>
+  <meta name="description" content="Desarrollo backend, IA/ML, automatizaciones y creación de MVPs. Equipo senior con experiencia en transporte, turismo, deporte, finanzas y medicina." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">  <style>
+    :root{
+      --bg:#0b1020; --panel:#0f1530; --muted:#9aa3b2; --text:#e8ecf4;
+      --brand:#5aa9ff; --brand2:#8b5cf6; --ok:#22c55e; --radius:20px;
+      --shadow:0 10px 30px rgba(0,0,0,.25), 0 6px 12px rgba(18,25,45,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:
+      radial-gradient(1100px 700px at 85% -10%, rgba(139,92,246,.10),transparent 60%),
+      radial-gradient(1000px 600px at -10% -20%, rgba(90,169,255,.10),transparent 60%),
+      var(--bg);color:var(--text)}
+    img{max-width:100%;display:block}
+    a{color:var(--brand);text-decoration:none}
+
+    /* Layout */
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(to bottom, rgba(11,16,32,.95), rgba(11,16,32,.75));backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav .container{display:flex;align-items:center;gap:16px;min-height:58px}
+    .brand{font-weight:800;letter-spacing:.2px;white-space:nowrap}
+    .nav nav{display:flex;gap:16px;flex-wrap:nowrap;white-space:nowrap;overflow-x:auto}
+    .nav a{color:var(--text);opacity:.85;transition:color .2s ease,opacity .2s ease}
+    .nav a:hover{opacity:1;color:var(--brand)}
+    .spacer{flex:1}
+    .cta, .btn{padding:10px 16px;border-radius:999px;background:linear-gradient(90deg,var(--brand),var(--brand2));border:0;color:#fff;font-weight:600;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s ease,filter .2s ease}
+    .cta:hover,.btn:hover{transform:translateY(-2px);filter:saturate(1.2)}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.18)}
+    .lang-switch{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);border-radius:999px;padding:6px 10px;color:#fff;cursor:pointer}
+
+    /* Global spacing (reducido entre secciones) */
+    section{padding:60px 0}
+    .section-head{margin:0 0 28px}
+    .section-head + *{margin-top:28px}
+    .stack-lg > * + *{margin-top:22px}
+
+    /* Hero */
+    .hero{position:relative;overflow:hidden}
+    .hero .container{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:72px 0}
+    .hero h1{font-size:clamp(28px,5vw,56px);line-height:1.05;margin:0;font-weight:800}
+    .hero p{color:var(--muted);font-size:clamp(16px,2.2vw,20px)}
+    /* Más separación para los botones del hero */
+    .hero .stack-lg{margin-top:56px}
+    .floaty{position:absolute;border-radius:50%;filter:blur(18px);opacity:.25;pointer-events:none;animation:floatUp 7s ease-in-out infinite}
+    .f1{width:160px;height:160px;top:8%;left:4%;background:radial-gradient(circle at 30% 30%, rgba(90,169,255,.6), transparent 60%)}
+    .f2{width:220px;height:220px;right:8%;bottom:10%;animation-duration:9s;background:radial-gradient(circle at 70% 70%, rgba(139,92,246,.6), transparent 60%)}
+
+    /* Hero media (imagen en lugar de vídeos) */
+    .hero-media{position:relative;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:var(--shadow)}
+    .hero-media img{width:100%;height:100%;object-fit:cover;aspect-ratio: 4 / 3}
+
+    /* Grid & Cards */
+    .grid{display:grid;gap:26px}
+    .grid-4{grid-template-columns:repeat(4,1fr)}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .card{--accent: var(--brand);background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:30px 26px;position:relative;overflow:hidden;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;display:flex;flex-direction:column;justify-content:space-between;height:100%;margin-top:32px;transform-origin:top center;margin-bottom:14px;will-change:transform}
+    .card:hover{transform:translateY(-6px) scale(1.04) rotateX(1deg) rotateY(-1deg);box-shadow:0 22px 56px color-mix(in srgb, var(--accent) 22%, rgba(0,0,0,.55)), 0 10px 26px rgba(0,0,0,.45);border-color:color-mix(in srgb, var(--accent) 55%, rgba(255,255,255,.4))}
+    .icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 35%, rgba(255,255,255,.12)), rgba(139,92,246,.15));border:1px solid rgba(255,255,255,.08);margin-bottom:12px;transition:transform .18s ease, filter .2s ease}
+    .card:hover .icon{transform:translateY(-2px) scale(1.06);filter:drop-shadow(0 4px 12px color-mix(in srgb, var(--accent) 55%, transparent))}
+    .icon svg{width:28px;height:28px;color:#e8ecf4}
+    .list{margin:10px 0 0 0;padding-left:18px;color:var(--muted)}
+    .list li{margin:6px 0}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .chip{font-size:12px;color:#d7dff0;border:1px dashed rgba(255,255,255,.15);padding:6px 8px;border-radius:999px;transition:transform .15s ease, border-color .2s ease, color .2s ease}
+    .chip:hover{transform:translateY(-2px);border-color:var(--brand);color:#fff}
+
+    /* About, Why, etc. */
+    .about{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+    .about .body{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
+    .about p{color:var(--muted);line-height:1.7}
+
+    /* Timeline */
+    .timeline{position:relative;margin-top:56px}
+    .timeline::before{content:"";position:absolute;left:16px;top:0;bottom:0;width:2px;background:linear-gradient(var(--brand), var(--brand2))}
+    .step{display:grid;grid-template-columns:40px 1fr;gap:14px;margin-bottom:26px;transition:transform .18s ease}
+    .step:hover{transform:translateX(4px)}
+    .dot{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;color:white;font-weight:700;animation:floatUp 5s ease-in-out infinite}
+
+    /* Process image (right) */
+    .process-grid{align-items:stretch}
+    .process-illustration{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow);height:100%;min-height:520px}
+    .process-illustration img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/5}
+
+    /* FAQ */
+    .faq .grid{gap:26px; margin-top:48px}
+    .faq-item{border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px 20px;background:rgba(255,255,255,.02);transition:border-color .2s ease}
+    .faq-item:hover{border-color:color-mix(in srgb, var(--brand) 35%, rgba(255,255,255,.2))}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+    .faq-item.open .faq-a{max-height:260px;margin-top:8px}
+
+    /* Footer */
+    footer{border-top:1px solid rgba(255,255,255,.08);padding:32px 0;color:var(--muted)}
+
+    /* Motion */
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.6,.3,1), transform .7s cubic-bezier(.2,.6,.3,1)}
+    .reveal.in{opacity:1;transform:none}
+    .reveal[data-anim="up"]{transform:translateY(28px)}
+    .reveal[data-anim="left"]{transform:translateX(-28px)}
+    .reveal[data-anim="right"]{transform:translateX(28px)}
+    .reveal[data-anim="zoom"]{transform:scale(.96);opacity:0}
+    .reveal.in[data-anim="zoom"]{transform:scale(1);opacity:1}
+    .reveal[data-delay]{transition-delay:var(--d,0ms)}
+
+    /* Responsive */
+    @keyframes floatUp{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+    @media (max-width:1024px){.hero .container{grid-template-columns:1fr}.grid-4{grid-template-columns:repeat(2,1fr)}.process-illustration{min-height:380px}}
+    @media (max-width:640px){.grid-3,.grid-2,.grid-4{grid-template-columns:1fr}.nav nav{gap:12px}}
+      /* --- Contact form (pro look) --- */
+    #lead-form{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    #lead-form input,#lead-form textarea, #lead-form select{width:100%;appearance:none;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 14px;color:var(--text);outline:none;transition:border-color .2s ease, box-shadow .2s ease}
+    #lead-form textarea{min-height:120px;resize:vertical}
+    #lead-form input::placeholder,#lead-form textarea::placeholder{color:color-mix(in srgb, var(--text) 60%, transparent)}
+    #lead-form input:focus,#lead-form textarea:focus{border-color:color-mix(in srgb, var(--brand) 55%, rgba(255,255,255,.3));box-shadow:0 0 0 4px rgba(90,169,255,.15)}
+    #lead-form .cta{grid-column:span 2;justify-self:start}
+    #lead-form #form-msg{grid-column:span 2;margin:0}
+    /* grid placement */
+    #lead-form [name="name"], #lead-form [name="email"]{grid-column:span 1}
+    #lead-form [name="company"]{grid-column:span 2}
+    #lead-form textarea[name="message"]{grid-column:span 2}
+    /* WhatsApp button */
+    .btn.whatsapp{background:linear-gradient(90deg,#25D366,#128C7E)!important}
+    .btn.whatsapp:hover{filter:saturate(1.1);transform:translateY(-2px)}
+    .contact .card ul{margin:0;padding-left:18px;color:var(--muted)}
+    @media (max-width:700px){#lead-form{grid-template-columns:1fr}.#lead-form .cta{grid-column:span 1}}
+      /* Form validation states */
+    .is-invalid{border-color:#ef4444!important; box-shadow:0 0 0 3px rgba(239,68,68,.2)!important}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container">
+      <a href="#" class="logo brand" data-i18n="brand">Core Edge Solutions</a>
+      <nav aria-label="Navegación principal">
+        <a href="#servicios" data-i18n="nav.services">Servicios</a>
+        <a href="#equipo" data-i18n="nav.team">Quiénes somos</a>
+        <a href="#ventajas" data-i18n="nav.why">Por qué elegirnos</a>
+        <a href="#proceso" data-i18n="nav.process">Proceso</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+      </nav>
+      <div class="spacer"></div>
+      <button id="lang-toggle" class="lang-switch" aria-live="polite" title="Change language">ES / EN</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="floaty f1" aria-hidden="true"></div>
+    <div class="floaty f2" aria-hidden="true"></div>
+    <div class="container">
+      <div>
+        <h1 class="reveal" data-anim="up" data-i18n="hero.h1">Impulsamos tu proyecto con soluciones de software</h1>
+        <p class="reveal" data-anim="up" data-delay="80ms" data-i18n="hero.p">Transformamos industrias con soluciones de desarrollo de backend, IA, aprendizaje automático y automatización de vanguardia, aprovechando nuestra diversa experiencia para obtener resultados.</p>
+        <div class="reveal stack-lg" data-anim="zoom">
+          <a class="btn" href="#contacto" data-i18n="cta.consult">Solicita una consultoría gratuita</a>
+          <a class="btn secondary" href="#servicios" data-i18n="cta.services">Ver nuestros servicios</a>
+        </div>
+      </div>
+      <div class="reveal" data-anim="right">
+        <!-- Reemplazo: imagen en lugar de vídeos -->
+        <figure class="hero-media">
+          <!-- Coloca la imagen en /images/hero-laptop-ai.jpg  (referencia Freepik en comentario) -->
+          <!-- https://www.freepik.es/imagen-ia-gratis/mano-futurista-trabajando-computadora-portatil_94952400.htm -->
+          <img src="images/hero-laptop-ai.jpg" alt="Mano futurista trabajando con un portátil, concepto IA" loading="eager"/>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="servicios" class="services">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal" data-anim="up" data-i18n="services.eyebrow">Servicios</span>
+        <h2 class="section-title reveal" data-anim="up" data-i18n="services.h2">Lo que hacemos para acelerar tu negocio</h2>
+        <p class="section-sub reveal" data-anim="up" data-i18n="services.sub">Cuatro áreas clave para pasar de la idea al impacto real: backend sólido, IA/ML aplicada, automatizaciones que ahorran tiempo y MVPs que validan el mercado.</p>
+      </div>
+      <div class="grid grid-4">
+        <article class="card reveal" data-anim="zoom" data-tilt style="--accent:#5aa9ff">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3 data-i18n="services.backend.h3">Desarrollo Backend</h3>
+          <p data-i18n="services.backend.p">APIs seguras, microservicios y arquitecturas cloud con alto rendimiento. Observabilidad, CI/CD y testing automatizado.</p>
+          <ul class="list">
+            <li data-i18n="services.backend.l1">Diseño de APIs REST/GraphQL, versionado y contratos.</li>
+            <li data-i18n="services.backend.l2">Microservicios con mensajería (Kafka/RabbitMQ) y colas.</li>
+            <li data-i18n="services.backend.l3">Observabilidad: logs, métricas y trazas (OpenTelemetry).</li>
+            <li data-i18n="services.backend.l4">Infra como código (Terraform), CI/CD y despliegues blue‑green/canary.</li>
+          </ul>
+          <div class="chips"><span class="chip">.NET</span><span class="chip">Node.js</span><span class="chip">AWS/Azure</span></div>
+        </article>
+
+        <article class="card reveal" data-anim="zoom" data-tilt style="--accent:#8b5cf6">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/><path d="M12 4V2"/></svg>
+          </div>
+          <h3 data-i18n="services.ml.h3">IA y Machine Learning</h3>
+          <p data-i18n="services.ml.p">Modelos predictivos, RAG, visión y NLP. Desde el prototipo hasta la puesta en producción con MLOps.</p>
+          <ul class="list">
+            <li data-i18n="services.ml.l1">Casos: predicción de demanda, clasificación, recomendadores.</li>
+            <li data-i18n="services.ml.l2">RAG con embeddings y bases vectoriales, orquestación.</li>
+            <li data-i18n="services.ml.l3">MLflow: experimentación, registro de modelos y seguimiento.</li>
+            <li data-i18n="services.ml.l4">Serving en tiempo real y batch; monitoreo de deriva.</li>
+          </ul>
+          <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Vector DB</span></div>
+        </article>
+
+        <article class="card reveal" data-anim="zoom" data-tilt style="--accent:#22c55e">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15l1.1 1.1a2 2 0 1 1-2.8 2.8L16.6 19.4"/></svg>
+          </div>
+          <h3 data-i18n="services.auto.h3">Automatizaciones</h3>
+          <p data-i18n="services.auto.p">Integraciones entre sistemas, bots, ETL/ELT y flujos de trabajo sin fricción para reducir costes y errores.</p>
+          <ul class="list">
+            <li data-i18n="services.auto.l1">Integraciones con ERP/CRM y APIs de terceros.</li>
+            <li data-i18n="services.auto.l2">RPA y scraping responsable con rotación y límites.</li>
+            <li data-i18n="services.auto.l3">ETL/ELT y data pipelines con validación de calidad.</li>
+            <li data-i18n="services.auto.l4">Alertado y reportes automáticos por email/Slack.</li>
+          </ul>
+          <div class="chips"><span class="chip">n8n</span><span class="chip">Make</span><span class="chip">Zapier</span></div>
+        </article>
+
+        <article class="card reveal" data-anim="zoom" data-tilt style="--accent:#f59e0b">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c1.5-4 6-7 10-8l2-6-6 2C10 11 7 15.5 5 19z"/><path d="M9 15l-2 2"/><path d="M14 10l-2 2"/></svg>
+          </div>
+          <h3 data-i18n="services.mvp.h3">Creación de MVPs</h3>
+          <p data-i18n="services.mvp.p">Validación rápida con foco en el problema. Roadmap claro, releases tempranas y métricas desde el día uno.</p>
+          <ul class="list">
+            <li data-i18n="services.mvp.l1">Discovery y definición del impacto/métricas.</li>
+            <li data-i18n="services.mvp.l2">Prototipos clicables y pruebas de usabilidad.</li>
+            <li data-i18n="services.mvp.l3">MVP técnico con analítica y experimentos A/B.</li>
+            <li data-i18n="services.mvp.l4">Plan de escalado y backlog de evolución.</li>
+          </ul>
+          <div class="chips"><span class="chip">Lean</span><span class="chip">UX Research</span><span class="chip">Analytics</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="equipo" class="about">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal" data-anim="up" data-i18n="about.eyebrow">Quiénes somos</span>
+        <h2 class="section-title reveal" data-anim="up" data-i18n="about.h2">Equipo senior con experiencia multisectorial</h2>
+        <p class="section-sub reveal" data-anim="up" data-i18n="about.sub">Hablamos el idioma del negocio y del código. Unimos estrategia y entrega técnica para resultados medibles.</p>
+      </div>
+      <div class="body reveal stack-lg" data-anim="zoom">
+        <h3 data-i18n="about.h3">Cómo trabajamos</h3>
+        <p data-i18n="about.p1">Somos arquitectos y desarrolladores con más de una década lanzando y escalando productos en sectores como transporte, turismo, deporte, finanzas y medicina. Empezamos por el problema, definimos métricas de éxito y diseñamos soluciones que crean valor desde el primer sprint. Nuestras prácticas incluyen code reviews, testing automatizado, seguridad por diseño, observabilidad y documentación viva.</p>
+        <div class="grid grid-2">
+          <div>
+            <h4 data-i18n="about.sectors">Sectores</h4>
+            <ul class="list">
+              <li data-i18n="about.s1">Transporte: optimización de rutas, trazabilidad, integraciones con flotas.</li>
+              <li data-i18n="about.s2">Turismo: motores de reserva, conversión, personalización.</li>
+              <li data-i18n="about.s3">Deporte: apps de rendimiento, análisis de datos, streaming.</li>
+              <li data-i18n="about.s4">Finanzas: KYC/AML, reporting, conciliaciones y seguridad.</li>
+              <li data-i18n="about.s5">Medicina: interoperabilidad, privacidad y flujos clínicos.</li>
+            </ul>
+          </div>
+          <div>
+            <h4 data-i18n="about.practices">Nuestras prácticas</h4>
+            <ul class="list">
+              <li data-i18n="about.p2">Arquitecturas escalables y resilientes.</li>
+              <li data-i18n="about.p3">CI/CD e infraestructura como código, MLOps.</li>
+              <li data-i18n="about.p4">Comunicación transparente y demos frecuentes.</li>
+              <li data-i18n="about.p5">Planes de soporte y evolución post‑lanzamiento.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="ventajas" class="why-us">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal" data-anim="up" data-i18n="why.eyebrow">Ventajas</span>
+        <h2 class="section-title reveal" data-anim="up" data-i18n="why.h2">Por qué elegirnos</h2>
+        <p class="section-sub reveal" data-anim="up" data-i18n="why.sub">Calidad de código, foco en negocio y entregas a tiempo. Diseñamos con métricas y escalamos con propósito.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card reveal stack-lg" data-anim="zoom" data-tilt>
+          <h3 data-i18n="why.q1">Código de calidad</h3>
+          <p data-i18n="why.q1p">Clean Architecture, SOLID, testing y revisiones con linters y PRs.</p>
+          <ul class="list"><li data-i18n="why.q1l1">Cobertura de pruebas y test de contrato.</li><li data-i18n="why.q1l2">Guías de estilo y convenciones.</li><li data-i18n="why.q1l3">Análisis estático y control de deuda técnica.</li></ul>
+        </div>
+        <div class="card reveal stack-lg" data-anim="zoom" data-tilt>
+          <h3 data-i18n="why.q2">Ahorro de tiempo</h3>
+          <p data-i18n="why.q2p">Aceleradores y plantillas propias para reducir el time‑to‑value.</p>
+          <ul class="list"><li data-i18n="why.q2l1">Starters reutilizables y librerías internas.</li><li data-i18n="why.q2l2">Automatización de despliegues.</li><li data-i18n="why.q2l3">Roadmaps claros y entregas quincenales.</li></ul>
+        </div>
+        <div class="card reveal stack-lg" data-anim="zoom" data-tilt>
+          <h3 data-i18n="why.q3">Escalabilidad & seguridad</h3>
+          <p data-i18n="why.q3p">Autoscaling, observabilidad y seguridad por diseño.</p>
+          <ul class="list"><li data-i18n="why.q3l1">Hardening, gestión de secretos y compliance.</li><li data-i18n="why.q3l2">Monitoreo 24/7 y alertas.</li><li data-i18n="why.q3l3">Estrategias de resiliencia y DR.</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="proceso" class="process">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal" data-anim="up" data-i18n="process.eyebrow">Proceso</span>
+        <h2 class="section-title reveal" data-anim="up" data-i18n="process.h2">De la primera llamada a la entrega</h2>
+        <p class="section-sub reveal" data-anim="up" data-i18n="process.sub">Un flujo claro que reduce riesgos y asegura resultados medibles.</p>
+      </div>
+      <div class="process-grid grid grid-2">
+        <div>
+          <div class="timeline">
+            <div class="step reveal" data-anim="left" data-tilt><div class="dot">1</div><div><h4 data-i18n="process.s1">Descubrimiento</h4><p data-i18n="process.s1p">Llamada inicial, entendimiento del contexto y objetivos.</p><ul class="list"><li data-i18n="process.s1l1">Mapa de stakeholders y restricciones.</li><li data-i18n="process.s1l2">Hipótesis y métricas de éxito.</li></ul></div></div>
+            <div class="step reveal" data-anim="left" data-tilt><div class="dot">2</div><div><h4 data-i18n="process.s2">Propuesta</h4><p data-i18n="process.s2p">Alcance, roadmap y presupuesto transparente.</p><ul class="list"><li data-i18n="process.s2l1">Arquitectura inicial y estimaciones.</li><li data-i18n="process.s2l2">Plan de riesgos y mitigaciones.</li></ul></div></div>
+            <div class="step reveal" data-anim="left" data-tilt><div class="dot">3</div><div><h4 data-i18n="process.s3">Construcción</h4><p data-i18n="process.s3p">Iteraciones cortas, demos frecuentes y feedback continuo.</p><ul class="list"><li data-i18n="process.s3l1">Sprints de 1–2 semanas.</li><li data-i18n="process.s3l2">Revisiones de código y QA continuo.</li></ul></div></div>
+            <div class="step reveal" data-anim="left" data-tilt><div class="dot">4</div><div><h4 data-i18n="process.s4">Calidad</h4><p data-i18n="process.s4p">Testing, seguridad y performance antes del lanzamiento.</p><ul class="list"><li data-i18n="process.s4l1">Pruebas funcionales, carga y seguridad.</li><li data-i18n="process.s4l2">Checklist de release y rollback.</li></ul></div></div>
+            <div class="step reveal" data-anim="left" data-tilt><div class="dot">5</div><div><h4 data-i18n="process.s5">Entrega & soporte</h4><p data-i18n="process.s5p">Puesta en producción, documentación y soporte post‑lanzamiento.</p><ul class="list"><li data-i18n="process.s5l1">Handover y formación.</li><li data-i18n="process.s5l2">Monitoreo y plan de evolución.</li></ul></div></div>
+          </div>
+        </div>
+        <figure class="process-illustration reveal" data-anim="zoom">
+          <img src="images/process-vertical.jpg" alt="Ilustración vertical del proceso — flujo de trabajo" loading="lazy"/>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal" data-anim="up" data-i18n="faq.eyebrow">FAQ</span>
+        <h2 class="section-title reveal" data-anim="up" data-i18n="faq.h2">Preguntas frecuentes</h2>
+        <p class="section-sub reveal" data-anim="up" data-i18n="faq.sub">Resolvemos las dudas más habituales. ¿Tienes otra? Escríbenos.</p>
+      </div>
+      <div class="container grid grid-2">
+        <div class="faq-item reveal" data-anim="left" data-tilt>
+          <div class="faq-q"><h3 data-i18n="faq.q1">¿En qué tecnologías trabajáis?</h3><span>＋</span></div>
+          <div class="faq-a"><p data-i18n="faq.a1">Principalmente .NET, Node.js, Python, React y cloud (AWS/Azure). Elegimos la pila que mejor encaja con tu caso. También trabajamos con bases de datos SQL/NoSQL y mensajería.</p></div>
+        </div>
+        <div class="faq-item reveal" data-anim="right" data-tilt>
+          <div class="faq-q"><h3 data-i18n="faq.q2">¿Cuánto dura un proyecto típico?</h3><span>＋</span></div>
+          <div class="faq-a"><p data-i18n="faq.a2">Un MVP puede estar listo en 4–8 semanas. Proyectos empresariales varían según alcance y dependencias. Definimos milestones y demos periódicas.</p></div>
+        </div>
+        <div class="faq-item reveal" data-anim="left" data-tilt>
+          <div class="faq-q"><h3 data-i18n="faq.q3">¿Pueden integrarse con nuestro equipo?</h3><span>＋</span></div>
+          <div class="faq-a"><p data-i18n="faq.a3">Sí. Trabajamos como equipo dedicado o extendiendo tu equipo actual con prácticas compartidas. Usamos tus herramientas o proponemos un stack estándar.</p></div>
+        </div>
+        <div class="faq-item reveal" data-anim="right" data-tilt>
+          <div class="faq-q"><h3 data-i18n="faq.q4">¿Ofrecen mantenimiento?</h3><span>＋</span></div>
+          <div class="faq-a"><p data-i18n="faq.a4">Sí. Planes de soporte y evolución con SLAs, monitoreo y mejoras continuas. También gestionamos roadmap y deuda técnica.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contacto" class="contact">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal" data-anim="up" data-i18n="contact.eyebrow">Contacto</span>
+        <h2 class="section-title reveal" data-anim="up" data-i18n="contact.h2">Cuéntanos tu proyecto</h2>
+        <p class="section-sub reveal" data-anim="up" data-i18n="contact.sub">Te respondemos en menos de 24h laborables.</p>
+      </div>
+      <div class="grid grid-2">
+        <form id="lead-form" class="card reveal stack-lg" data-anim="left" aria-label="Formulario de contacto" method="post" action="/api/lead" data-endpoint="/api/lead" novalidate>
+          <input name="name" placeholder="Nombre" required data-i18n-placeholder="contact.name" />
+          <input name="email" type="email" placeholder="Email" required data-i18n-placeholder="contact.email" />
+          <input name="company" placeholder="Empresa (opcional)" data-i18n-placeholder="contact.company" />
+          <textarea name="message" placeholder="Cuéntanos brevemente qué necesitas" required data-i18n-placeholder="contact.message"></textarea>
+          <!-- Honeypot anti‑spam -->
+          <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0">
+          <button class="cta" type="submit" data-i18n="contact.submit">Enviar consulta</button>
+          <p class="chip" id="form-msg" role="status" aria-live="polite"></p>
+        </form>
+        <div class="card reveal stack-lg" data-anim="right">
+          <h3 data-i18n="contact.alt.h3">También por aquí</h3>
+          <p><strong data-i18n="contact.alt.email">Email:</strong> <a href="mailto:info@coreedge.dev">info@coreedge.dev</a></p>
+          <p data-i18n="contact.alt.locs">Madrid · Lugo · Málaga — remoto e in situ.</p>
+          <a class="btn whatsapp" href="https://wa.me/34645194198?text=Hola%20Core%20Edge%2C%20me%20gustar%C3%ADa%20hacer%20una%20consulta" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">Escríbenos por WhatsApp</a>
+          <ul>
+            <li>Respuesta media &lt; 1 día laborable</li>
+            <li>Envíanos voz, texto o documentos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <p>© <span id="year"></span> <span data-i18n="brand">Core Edge Solutions</span>. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+      <p><a href="#" data-i18n="footer.privacy">Privacidad</a> · <a href="#" data-i18n="footer.terms">Términos</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Animaciones reveal
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const el = e.target; const delay = el.getAttribute('data-delay');
+          if(delay){ el.style.setProperty('--d', delay); }
+          el.classList.add('in'); io.unobserve(el);
+        }
+      });
+    },{threshold:0.15, rootMargin:'0px 0px -10% 0px'});
+    document.querySelectorAll('.reveal').forEach((el,i)=>{
+      if(!el.hasAttribute('data-delay')){ el.style.setProperty('--d', (i%6)*60+'ms'); }
+      io.observe(el);
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item=>{
+      item.querySelector('.faq-q').addEventListener('click',()=> item.classList.toggle('open'));
+    });
+
+    // Tilt sutil (hover anim)
+    (function(){
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function attachTilt(el){
+        if(prefersReduced) return;
+        const strength = 8;
+        el.addEventListener('mousemove',(e)=>{
+          const b = el.getBoundingClientRect();
+          const cx = b.left + b.width/2, cy = b.top + b.height/2;
+          const dx = (e.clientX - cx) / (b.width/2);
+          const dy = (e.clientY - cy) / (b.height/2);
+          el.style.transform = `rotateX(${-dy*strength}deg) rotateY(${dx*strength}deg) translateY(-6px) scale(1.04)`;
+        });
+        el.addEventListener('mouseleave',()=>{ el.style.transform=''; });
+      }
+      document.querySelectorAll('[data-tilt], .card').forEach(attachTilt);
+    })();
+
+    // ====== I18N simple (ES/EN) ======
+    const I18N = {
+      es: { brand: 'Core Edge Solutions' },
+      en: { brand: 'Core Edge Solutions' }
+    };
+
+    function applyI18n(lang){
+      const dict = I18N[lang] || I18N.es;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(dict[key]) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+        const key = el.getAttribute('data-i18n-placeholder');
+        if(dict[key]) el.setAttribute('placeholder', dict[key]);
+      });
+      localStorage.setItem('lang', lang);
+      const btn = document.getElementById('lang-toggle');
+      if(btn) btn.textContent = lang === 'es' ? 'ES / EN' : 'EN / ES';
+    }
+
+    const saved = localStorage.getItem('lang') || ((navigator.language||'es').toLowerCase().startsWith('es') ? 'es' : 'en');
+    applyI18n(saved);
+    document.getElementById('lang-toggle').addEventListener('click',()=>{
+      const next = (localStorage.getItem('lang')||'es') === 'es' ? 'en' : 'es';
+      applyI18n(next);
+    });
+      // Form submit -> POST JSON a endpoint (configurable en data-endpoint o action)
+(function(){
+  const form = document.getElementById('lead-form');
+  if(!form) return;
+  const endpoint = form.getAttribute('data-endpoint') || form.getAttribute('action') || '/api/lead';
+  const btn = form.querySelector('button[type="submit"]');
+  const msg = document.getElementById('form-msg');
+  const inputs = Array.from(form.querySelectorAll('input[name], textarea[name], select[name]'));
+
+  function setStatus(text, ok=true){
+    if(!msg) return;
+    msg.textContent = text;
+    msg.style.color = ok ? '#a7f3d0' : '#fecaca';
+  }
+  function isEmail(v){
+    if(!v) return false;
+    const at = v.indexOf('@');
+    if(at <= 0) return false;
+    const dot = v.indexOf('.', at+1);
+    return dot > at + 1 && dot < v.length - 1;
+  }
+  function validate(){
+    let valid = true;
+    inputs.forEach(el=>{
+      el.classList.remove('is-invalid');
+      if(el.hasAttribute('required') && !String(el.value||'').trim()){
+        el.classList.add('is-invalid'); valid = false;
+      }
+      if(el.name==='email' && el.value && !isEmail(el.value)){
+        el.classList.add('is-invalid'); valid=false;
+      }
+    });
+    return valid;
+  }
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    if(!validate()){ setStatus('Revisa los campos marcados.', false); return; }
+    // honeypot
+    if(form.website && form.website.value){ return; }
+    const payload = {
+      name: (form.name && form.name.value ? form.name.value.trim() : ''),
+      email: (form.email && form.email.value ? form.email.value.trim() : ''),
+      company: (form.company && form.company.value ? form.company.value.trim() : ''),
+      message: (form.message && form.message.value ? form.message.value.trim() : ''),
+      meta: {
+        url: location.href,
+        userAgent: navigator.userAgent,
+        lang: document.documentElement.lang || navigator.language,
+        tzOffsetMinutes: new Date().getTimezoneOffset(),
+        timestamp: new Date().toISOString(),
+        utm: (function(){ const o={}; const sp=new URLSearchParams(location.search); sp.forEach((v,k)=>o[k]=v); return o; })()
+      }
+    };
+    try{
+      if(btn){ btn.disabled = true; btn.textContent = 'Enviando…'; }
+      setStatus('Enviando tu solicitud…');
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if(!res.ok){ throw new Error('HTTP '+res.status); }
+      setStatus('¡Gracias! Te contactaremos en menos de 24h laborables.');
+      form.reset();
+    }catch(err){
+      console.error(err);
+      setStatus('No se pudo enviar. Inténtalo de nuevo o escribe a info@coreedge.dev', false);
+    }finally{
+      if(btn){ btn.disabled = false; btn.textContent = 'Enviar consulta'; }
+    }
+  });
+})();
+
+  </script>
+</body>
+</html>
