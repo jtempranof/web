@@ -155,9 +155,35 @@ body.light .chip{ color: color-mix(in srgb, var(--text) 70%, transparent); borde
 .why-tiles .tile-square:hover{transform:translateY(-4px)}
 .why-tiles .tile-square:hover::before{transform:scale(1.06)}
 .why-tiles .tile-square h3{position:relative;z-index:1;margin:0;display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(11,16,32,.35);font-size:15px;font-weight:700;color:#fff}
+/* panel de texto al hover */
+.why-tiles .tile-hover{position:absolute;left:12px;right:12px;bottom:12px;background:rgba(11,16,32,.55);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(6px);border-radius:12px;padding:10px 12px;color:#fff;font-size:13px;line-height:1.45;opacity:0;transform:translateY(6px);transition:opacity .25s ease, transform .25s ease;z-index:1;pointer-events:none}
+.why-tiles .tile-square:hover .tile-hover, .why-tiles .tile-square:focus-within .tile-hover{opacity:1;transform:translateY(0)}
+body.light .why-tiles .tile-hover{background:rgba(255,255,255,.85);border-color:rgba(15,23,42,.15);color:#0f172a}
 body.light .why-tiles .tile-square{border-color:rgba(15,23,42,.12)}
 body.light .why-tiles .tile-square::after{background:linear-gradient(180deg, rgba(255,255,255,.0) 40%, rgba(255,255,255,.85) 100%)}
 body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background:rgba(255,255,255,.75);color:#0f172a}
+
+/* ===== Mobile polish (padding & spacing) ===== */
+@media (max-width:640px){
+  .container{padding:0 14px}
+  section{padding:18px 0}
+  .section-head{margin:0 0 10px}
+  .section-head + *{margin-top:12px}
+  .grid{gap:14px}
+  .card{padding:16px;margin-top:12px;margin-bottom:8px}
+  .about .body{padding:18px}
+  .hero .container{padding:28px 0;gap:18px}
+  .hero .stack-lg{margin-top:14px}
+  .faq .grid{gap:14px;margin-top:12px}
+  .faq-item{padding:12px 14px}
+  .why-tiles{gap:12px}
+  .why-tiles .tile-square{padding:10px;border-radius:14px}
+  .why-tiles .tile-square h3{font-size:14px;padding:5px 10px}
+  .why-tiles .tile-hover{left:8px;right:8px;bottom:8px;padding:8px 10px;font-size:12.5px}
+  #lead-form{gap:12px}
+  #lead-form .cta{width:100%;}
+  footer{padding:20px 0}
+}
 </style>
 </head>
 <body class="light">
@@ -297,17 +323,21 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
         <h2 class="section-title reveal" data-anim="up">Por qué elegirnos</h2>
       </div>
       <div class="grid grid-4 why-tiles">
-        <div class="tile-square reveal" data-anim="zoom" data-tilt style="--bg:url('images/why-senior.jpg')">
+        <div class="tile-square reveal" data-anim="zoom" data-tilt style="--bg:url('images/why-senior.jpg')" tabindex="0">
           <h3>Equipo senior 100%</h3>
+          <div class="tile-hover">Arquitectos y devs senior al frente: menos retrabajo, decisiones acertadas y entrega estable desde el primer sprint.</div>
         </div>
-        <div class="tile-square reveal" data-anim="zoom" data-tilt style="--bg:url('images/why-speed.jpg')">
+        <div class="tile-square reveal" data-anim="zoom" data-tilt style="--bg:url('images/why-speed.jpg')" tabindex="0">
           <h3>Inicio rápido</h3>
+          <div class="tile-hover">Kickoff en 5 días; entorno listo en la semana 1 y primeras entregas útiles en 2–3 semanas para validar cuanto antes.</div>
         </div>
-        <div class="tile-square reveal" data-anim="zoom" data-tilt style="--bg:url('images/why-transparency.jpg')">
+        <div class="tile-square reveal" data-anim="zoom" data-tilt style="--bg:url('images/why-transparency.jpg')" tabindex="0">
           <h3>Transparencia y previsibilidad</h3>
+          <div class="tile-hover">Coste por fases, roadmaps claros y demos quincenales con métricas compartidas para que siempre sepas dónde estás.</div>
         </div>
-        <div class="tile-square reveal" data-anim="zoom" data-tilt style="--bg:url('images/why-ownership.jpg')">
+        <div class="tile-square reveal" data-anim="zoom" data-tilt style="--bg:url('images/why-ownership.jpg')" tabindex="0">
           <h3>Propiedad total (sin lock‑in)</h3>
+          <div class="tile-hover">Código en tu repo, Infraestructura como Código y documentación completa. Puedes seguir sin nosotros cuando quieras.</div>
         </div>
       </div>
     </div>
