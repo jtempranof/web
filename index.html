@@ -171,8 +171,8 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
   .grid{gap:14px}
   .card{padding:16px;margin-top:12px;margin-bottom:8px}
   .about .body{padding:18px}
-  .hero .container{padding:36px 18px;gap:16px}
-  .hero .stack-lg{margin-top:16px;display:grid;grid-template-columns:1fr;gap:12px}
+  .hero .container{padding:40px 18px;gap:16px}
+  .hero .stack-lg{margin-top:28px;display:grid;grid-template-columns:1fr;gap:14px}
   .faq .grid{gap:14px;margin-top:12px}
   .faq-item{padding:12px 14px}
   .why-tiles{gap:12px}
@@ -186,9 +186,18 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
 
 /* === Full-bleed FAQ & Contact en móvil === */
 @media (max-width:640px){
-  #faq .container.grid{margin-left:-14px;margin-right:-14px}
-  #contacto .grid{margin-left:-14px;margin-right:-14px}
+  /* contenedores a ancho de pantalla */
+  #faq .container.grid,
+  #contacto .grid{
+    width:100vw;
+    margin-left:calc(50% - 50vw);
+    margin-right:calc(50% - 50vw);
+    padding-left:12px;
+    padding-right:12px;
+  }
+  /* tarjetas al canto y botón del form a 100% */
   #faq .faq-item, #contacto .card, #contacto #lead-form{border-radius:0}
+  #lead-form .cta{grid-column:1 / -1;justify-self:stretch;width:100%}
 }
 
 /* ===== Mobile header menu (hamburger) ===== */
@@ -201,8 +210,7 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
   body.light .nav nav{background:linear-gradient(to bottom, rgba(255,255,255,.98), rgba(255,255,255,.92));border-bottom:1px solid rgba(15,23,42,.10)}
   body.light .nav nav a{background:rgba(15,23,42,.06)}
   body.light .menu-toggle{border-color:rgba(15,23,42,.18);background:rgba(15,23,42,.06);color:#0f172a}
-  /* Hero: más aire y botones apilados; imagen full-bleed */
-  .hero .stack-lg{margin-top:24px}
+  /* Hero: imagen full-bleed */
   .hero .hero-media{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);border-radius:0}
   .hero .hero-media img{aspect-ratio:16/9}
   /* Espaciados tras títulos */
@@ -214,6 +222,8 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
   #ventajas .grid-4{grid-template-columns:repeat(2,1fr)!important}
 }
 /* Proceso: menos separación general */
+#proceso .timeline{margin-top:20px}
+
 #proceso .timeline{margin-top:20px}
 
 /* === Spacing fix: margen claro entre título y contenido (Quiénes somos / Por qué elegirnos) === */
@@ -611,28 +621,28 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
       });
     })();
     // Menú móvil (hamburger)
-    (function(){
-      var hdr = document.querySelector('header.nav');
-      var btn = document.getElementById('menu-toggle');
-      var nav = document.getElementById('primary-nav');
-      if(!hdr || !btn || !nav) return;
-      btn.addEventListener('click', function(){
-        var open = hdr.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-      nav.querySelectorAll('a').forEach(function(a){
-        a.addEventListener('click', function(){
-          hdr.classList.remove('open');
-          btn.setAttribute('aria-expanded','false');
-        });
-      });
-      document.addEventListener('keydown', function(e){
-        if(e.key==='Escape'){
-          hdr.classList.remove('open');
-          btn.setAttribute('aria-expanded','false');
-        }
-      });
-    })();
+(function(){
+  var hdr = document.querySelector('header.nav');
+  var btn = document.getElementById('menu-toggle');
+  var nav = document.getElementById('primary-nav');
+  if(!hdr || !btn || !nav) return;
+  btn.addEventListener('click', function(){
+    var open = hdr.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      hdr.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+    });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape'){
+      hdr.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+    }
+  });
+})();
   </script>
 </body>
 </html>
