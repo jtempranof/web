@@ -508,7 +508,7 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
           <h3>También por aquí</h3>
           <p><strong>Email:</strong> <a href="mailto:info@coreedge.dev">info@coreedge.dev</a></p>
           <p>Teléfono: <a href="tel:+34645194198">+34 645 19 41 98</a></p>
-          <p>Madrid · Lugo · Málaga — remoto e in situ.</p>
+          <p>Madrid · Vigo · Málaga — remoto e in situ.</p>
           <a class="btn whatsapp" href="https://wa.me/34645194198?text=Hola%20Core%20Edge%2C%20me%20gustar%C3%ADa%20hacer%20una%20consulta" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">Escríbenos por WhatsApp</a>
           <ul>
             <li>Respuesta media &lt; 1 día laborable</li>
@@ -610,4 +610,29 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
         }finally{ if(btn){ btn.disabled = false; btn.textContent = 'Enviar consulta'; } }
       });
     })();
-  
+    // Menú móvil (hamburger)
+    (function(){
+      var hdr = document.querySelector('header.nav');
+      var btn = document.getElementById('menu-toggle');
+      var nav = document.getElementById('primary-nav');
+      if(!hdr || !btn || !nav) return;
+      btn.addEventListener('click', function(){
+        var open = hdr.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      nav.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){
+          hdr.classList.remove('open');
+          btn.setAttribute('aria-expanded','false');
+        });
+      });
+      document.addEventListener('keydown', function(e){
+        if(e.key==='Escape'){
+          hdr.classList.remove('open');
+          btn.setAttribute('aria-expanded','false');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
