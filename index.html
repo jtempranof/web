@@ -186,16 +186,14 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
 
 /* === Full-bleed FAQ & Contact en móvil === */
 @media (max-width:640px){
-  /* contenedores a ancho de pantalla */
+  /* usar el ancho del contenedor sin desplazamientos laterales */
   #faq .container.grid,
   #contacto .grid{
-    width:100vw;
-    margin-left:calc(50% - 50vw);
-    margin-right:calc(50% - 50vw);
-    padding-left:12px;
-    padding-right:12px;
+    width:100%;
+    margin:0;
+    padding-left:0;
+    padding-right:0;
   }
-  /* tarjetas al canto y botón del form a 100% */
   #faq .faq-item, #contacto .card, #contacto #lead-form{border-radius:0}
   #lead-form .cta{grid-column:1 / -1;justify-self:stretch;width:100%}
 }
@@ -242,7 +240,7 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
   .hero .stack-lg{margin-top:24px}
   .hero .hero-media{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);border-radius:0}
   /* FAQ + Contacto a pantalla completa y sin indentaciones raras */
-  #faq .container.grid, #contacto .grid{display:block;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding-left:12px;padding-right:12px}
+  #faq .container.grid, #contacto .grid{display:block;width:100%;margin:0;padding-left:0;padding-right:0}
   #faq .faq-item, #contacto .card, #contacto #lead-form{border-radius:0;margin:0}
   .faq .grid{gap:12px;margin-top:8px}
   /* Form sizes */
@@ -250,6 +248,20 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
   #lead-form input{height:44px}
   #lead-form textarea{min-height:120px}
   #lead-form .cta{width:100%;grid-column:1 / -1;justify-self:stretch}
+}
+
+/* Evitar scroll horizontal por elementos 100vw en móvil */
+html,body{overflow-x:hidden}
+
+/* === Pixel 7 / móvil: secciones a pantalla completa y centradas === */
+@media (max-width:430px){
+  /* FAQ y Contacto: sin padding lateral del contenedor externo */
+  #faq > .container,
+  #contacto > .container{padding-left:0;padding-right:0}
+  /* Grids internos: ocupar 100% sin márgenes añadidos */
+  #faq .container.grid,
+  #contacto .grid{width:100%;margin:0;padding-left:0;padding-right:0}
+  #faq .faq-item, #contacto .card, #contacto #lead-form{border-radius:0}
 }
 </style>
 </head>
@@ -625,42 +637,4 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
       const inputs = Array.from(form.querySelectorAll('input[name], textarea[name], select[name]'));
       function setStatus(text, ok=true){ if(!msg) return; msg.textContent = text; msg.style.color = ok ? '#a7f3d0' : '#fecaca'; }
       function isEmail(v){ if(!v) return false; const at = v.indexOf('@'); if(at <= 0) return false; const dot = v.indexOf('.', at+1); return dot > at + 1 && dot < v.length - 1; }
-      function validate(){ let valid = true; inputs.forEach(el=>{ el.classList.remove('is-invalid'); if(el.hasAttribute('required') && !String(el.value||'').trim()){ el.classList.add('is-invalid'); valid = false; } if(el.name==='email' && el.value && !isEmail(el.value)){ el.classList.add('is-invalid'); valid=false; } }); return valid; }
-      form.addEventListener('submit', async (e)=>{
-        e.preventDefault(); if(!validate()){ setStatus('Revisa los campos marcados.', false); return; }
-        if(form.website && form.website.value){ return; }
-        const payload = { name: (form.name && form.name.value ? form.name.value.trim() : ''), email: (form.email && form.email.value ? form.email.value.trim() : ''), company: (form.company && form.company.value ? form.company.value.trim() : ''), message: (form.message && form.message.value ? form.message.value.trim() : ''), meta: { url: location.href, userAgent: navigator.userAgent, lang: document.documentElement.lang || navigator.language, tzOffsetMinutes: new Date().getTimezoneOffset(), timestamp: new Date().toISOString(), utm: (function(){ const o={}; const sp=new URLSearchParams(location.search); sp.forEach((v,k)=>o[k]=v); return o; })() } };
-        try{ if(btn){ btn.disabled = true; btn.textContent = 'Enviando…'; } setStatus('Enviando tu solicitud…');
-          const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-          if(!res.ok){ throw new Error('HTTP '+res.status); }
-          setStatus('¡Gracias! Te contactaremos en menos de 24h laborables.'); form.reset();
-        }catch(err){ console.error(err); setStatus('No se pudo enviar. Inténtalo de nuevo o escribe a info@coreedge.dev', false);
-        }finally{ if(btn){ btn.disabled = false; btn.textContent = 'Enviar consulta'; } }
-      });
-    })();
-    // Menú móvil (hamburger)
-(function(){
-  var hdr = document.querySelector('header.nav');
-  var btn = document.getElementById('menu-toggle');
-  var nav = document.getElementById('primary-nav');
-  if(!hdr || !btn || !nav) return;
-  btn.addEventListener('click', function(){
-    var open = hdr.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  nav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      hdr.classList.remove('open');
-      btn.setAttribute('aria-expanded','false');
-    });
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key==='Escape'){
-      hdr.classList.remove('open');
-      btn.setAttribute('aria-expanded','false');
-    }
-  });
-})();
-  </script>
-</body>
-</html>
+      function validate(){ let valid = true; inputs.forEach(el=>{ el.classList.remove('is-invalid'); if(el.hasAttribute('required') && !String(el.value||'').trim()){ el.classList.add('is-invalid'); valid = false; } if(el.name==='email' && el.value && !isEmail(el.value)){ el.classList.add('is-invalid'); valid=false; } }); return vali
