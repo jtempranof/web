@@ -32,9 +32,8 @@
     .lang-switch{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);border-radius:999px;padding:6px 10px;color:#fff;cursor:pointer}
 
     section{padding:28px 0}
-    .section-head{margin:0 0 16px}
+    .section-head{margin:0 0 24px}
     .section-head + *{margin-top:16px}
-    .stack-lg > * + *{margin-top:16px}
 
     /* === Nombres de sección con borde redondeado estilo FAQ === */
     .section-title{display:inline-block;padding:6px 10px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.03);backdrop-filter:blur(4px);font-size:clamp(11px,1.1vw,13px)}
@@ -58,7 +57,7 @@
     .grid-4{grid-template-columns:repeat(4,1fr)}
     .grid-3{grid-template-columns:repeat(3,1fr)}
     .grid-2{grid-template-columns:repeat(2,1fr)}
-    .card{--accent: var(--brand);background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:30px 26px;position:relative;overflow:hidden;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;display:flex;flex-direction:column;justify-content:space-between;height:100%;margin-top:32px;transform-origin:top center;margin-bottom:14px;will-change:transform}
+    .card{--accent: var(--brand);background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:30px 26px;position:relative;overflow:hidden;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;display:flex;flex-direction:column;justify-content:space-between;height:100%;margin-top:0px;transform-origin:top center;margin-bottom:14px;will-change:transform}
     .card:hover{transform:translateY(-6px) scale(1.04) rotateX(1deg) rotateY(-1deg);box-shadow:0 22px 56px color-mix(in srgb, var(--accent) 22%, rgba(0,0,0,.55)), 0 10px 26px rgba(0,0,0,.45);border-color:color-mix(in srgb, var(--accent) 55%, rgba(255,255,255,.4))}
     .icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 35%, rgba(255,255,255,.12)), rgba(139,92,246,.15));border:1px solid rgba(255,255,255,.08);margin-bottom:12px;transition:transform .18s ease, filter .2s ease}
     .card:hover .icon{transform:translateY(-2px) scale(1.06);filter:drop-shadow(0 4px 12px color-mix(in srgb, var(--accent) 55%, transparent))}
@@ -83,7 +82,7 @@
     .process-illustration{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow);height:100%;min-height:520px}
     .process-illustration img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/5}
 
-    .faq .grid{gap:26px; margin-top:48px}
+    .faq .grid{gap:26px; margin-top:10px}
     .faq-item{border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px 20px;background:rgba(255,255,255,.02);transition:border-color .2s ease}
     .faq-item:hover{border-color:color-mix(in srgb, var(--brand) 35%, rgba(255,255,255,.2))}
     .faq-q{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
@@ -165,8 +164,7 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
 /* ===== Mobile polish (padding & spacing) ===== */
 @media (max-width:640px){
   .container{padding:0 14px}
-  section{padding:18px 0}
-  .section-head{margin:0 0 10px}
+  section{padding:10px 0}
   .section-head + *{margin-top:12px}
   .grid{gap:14px}
   .card{padding:16px;margin-top:12px;margin-bottom:8px}
@@ -205,8 +203,6 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
   .hero .stack-lg{margin-top:24px}
   .hero .hero-media{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);border-radius:0}
   .hero .hero-media img{aspect-ratio:16/9}
-  /* Espaciados tras títulos */
-  #equipo .section-head + *, #ventajas .section-head + *{margin-top:16px}
   #proceso .section-head + *{margin-top:12px}
   /* Proceso: padding lateral extra */
   #proceso .container{padding-left:18px;padding-right:18px}
@@ -219,10 +215,6 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
 /* === Spacing fix: margen claro entre título y contenido (Quiénes somos / Por qué elegirnos) === */
 #equipo .section-head + *,
 #ventajas .section-head + *{ margin-top:24px; }
-@media (max-width:640px){
-  #equipo .section-head + *,
-  #ventajas .section-head + *{ margin-top:16px; }
-}
 
   /* ------------------------------------------------------------------
      Additional mobile-specific styles for improved readability and UX
@@ -276,9 +268,6 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
     .faq h3{
       font-size:16px;
     }
-    .faq .faq-q{
-      padding:12px 0;
-    }
     .faq span{
       font-size:20px;
     }
@@ -301,6 +290,49 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
     .chip{
       font-size:13px;
       padding:6px 10px;
+    }
+
+    /* Contact form: stack fields vertically on small screens */
+    #lead-form{
+      grid-template-columns:1fr !important;
+    }
+    #lead-form input[name="name"],
+    #lead-form input[name="email"]{
+      grid-column:span 2 !important;
+    }
+
+    /* Avoid horizontal slide-in animations on narrow screens to prevent content shifting */
+    .reveal[data-anim="right"],
+    .reveal[data-anim="left"]{
+      transform:translateX(0) !important;
+    }
+
+    /* Ensure the hero media aligns with the content on mobile instead of bleeding outside */
+    .hero .hero-media{
+      /* Disable full‑bleed behaviour on small screens */
+      width:100% !important;
+      margin-left:0 !important;
+      margin-right:0 !important;
+      /* Add a bit of vertical margin to separate it from preceding buttons */
+      margin-top:16px;
+    }
+    /* Increase spacing between stacked hero buttons to prevent overlap */
+    .hero .stack-lg{
+      gap:16px !important;
+      /* Ajuste del margen superior en la vista móvil para separar el texto de los botones */
+      margin-top:48px !important;
+    }
+
+    /* Reduce lateral paddings on key containers to avoid excessive whitespace */
+    /* Align hero content consistently with global container padding */
+    .hero .container{
+      padding-left:14px;
+      padding-right:14px;
+    }
+    /* Use the same left/right padding for the process section */
+    #proceso .container{
+      padding-left:14px;
+      padding-right:14px;
     }
   }
 </style>
@@ -658,7 +690,84 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
       document.querySelectorAll('[data-tilt], .card').forEach(attachTilt);
     })();
 
-    const I18N = { es: { brand: 'Core Edge Solutions' }, en: { brand: 'Core Edge Solutions' } };
+    const I18N = {
+      es: {
+        brand: 'Core Edge Solutions',
+        'hero.h1': 'Impulsamos tu proyecto con soluciones de software',
+        'hero.p': 'Transformamos industrias con soluciones de desarrollo de backend, IA, aprendizaje automático y automatización de vanguardia, aprovechando nuestra diversa experiencia para obtener resultados.',
+        'nav.services': 'Servicios',
+        'nav.team': 'Quiénes somos',
+        'nav.why': 'Por qué elegirnos',
+        'nav.process': 'Proceso',
+        'nav.faq': 'FAQ',
+        'nav.contact': 'Contacto',
+        'cta.consult': 'Solicita una consultoría gratuita',
+        'cta.services': 'Ver nuestros servicios',
+        'services.backend.h3': 'Desarrollo Backend',
+        'services.backend.p': 'APIs seguras, microservicios y cloud de alto rendimiento con observabilidad y CI/CD.',
+        'services.ml.h3': 'IA y Machine Learning',
+        'services.ml.p': 'Modelos predictivos, visión y NLP. Del prototipo a producción con MLOps.',
+        'services.auto.h3': 'Automatizaciones',
+        'services.auto.p': 'Integraciones, bots y flujos sin fricción para reducir costes y errores.',
+        'services.mvp.h3': 'Creación de MVPs',
+        'services.mvp.p': 'Validación rápida con roadmap claro y métricas desde el día uno.',
+        'about.h3': 'Cómo trabajamos',
+        'about.p1': 'Más de una década lanzando y escalando productos en transporte, turismo, deporte, finanzas y medicina. Empezamos por el problema, definimos métricas de éxito y entregamos valor desde el primer sprint. Prácticas: code reviews, testing, seguridad por diseño, observabilidad y documentación viva.',
+        'about.practices': 'Nuestras prácticas',
+        'process.s1': 'Descubrimiento',
+        'process.s2': 'Propuesta',
+        'process.s3': 'Construcción',
+        'process.s4': 'Calidad',
+        'process.s5': 'Entrega & soporte',
+        'faq.h2': 'Preguntas frecuentes',
+        'faq.q1': '¿En qué tecnologías trabajáis?',
+        'faq.a1': 'Principalmente .NET, Node.js, Python, React y cloud (AWS/Azure). Elegimos la pila que mejor encaja con tu caso.',
+        'faq.q2': '¿Cuánto dura un proyecto típico?',
+        'faq.a2': 'Un MVP puede estar listo en 4–8 semanas. Proyectos empresariales varían según alcance y dependencias.',
+        'faq.q3': '¿Pueden integrarse con nuestro equipo?',
+        'faq.a3': 'Sí, como equipo dedicado o extendiendo el tuyo, con prácticas compartidas y herramientas estándar.',
+        'faq.q4': '¿Ofrecen mantenimiento?',
+        'faq.a4': 'Sí, con SLAs, monitoreo y mejoras continuas. Gestionamos roadmap y deuda técnica.'
+      },
+      en: {
+        brand: 'Core Edge Solutions',
+        'hero.h1': 'We accelerate your project with cutting‑edge software',
+        'hero.p': 'We transform industries with cutting‑edge backend development, AI, machine learning and automation solutions, leveraging our diverse experience to achieve results.',
+        'nav.services': 'Services',
+        'nav.team': 'Who we are',
+        'nav.why': 'Why choose us',
+        'nav.process': 'Process',
+        'nav.faq': 'FAQ',
+        'nav.contact': 'Contact',
+        'cta.consult': 'Request a free consultation',
+        'cta.services': 'See our services',
+        'services.backend.h3': 'Backend Development',
+        'services.backend.p': 'Secure APIs, microservices and high‑performance cloud with observability and CI/CD.',
+        'services.ml.h3': 'AI and Machine Learning',
+        'services.ml.p': 'Predictive models, vision and NLP. From prototype to production with MLOps.',
+        'services.auto.h3': 'Automations',
+        'services.auto.p': 'Integrations, bots and frictionless flows to reduce costs and errors.',
+        'services.mvp.h3': 'MVP Creation',
+        'services.mvp.p': 'Fast validation with a clear roadmap and metrics from day one.',
+        'about.h3': 'How we work',
+        'about.p1': 'More than a decade launching and scaling products in transport, tourism, sports, finance and medicine. We start with the problem, define success metrics and deliver value from the first sprint. Practices: code reviews, testing, security by design, observability and living documentation.',
+        'about.practices': 'Our practices',
+        'process.s1': 'Discovery',
+        'process.s2': 'Proposal',
+        'process.s3': 'Build',
+        'process.s4': 'Quality',
+        'process.s5': 'Delivery & support',
+        'faq.h2': 'Frequently asked questions',
+        'faq.q1': 'What technologies do you work with?',
+        'faq.a1': 'Mainly .NET, Node.js, Python, React and cloud (AWS/Azure). We choose the stack that best fits your case.',
+        'faq.q2': 'How long does a typical project last?',
+        'faq.a2': 'An MVP can be ready in 4–8 weeks. Enterprise projects vary depending on scope and dependencies.',
+        'faq.q3': 'Can you integrate with our team?',
+        'faq.a3': 'Yes, as a dedicated team or extending yours, with shared practices and standard tools.',
+        'faq.q4': 'Do you offer maintenance?',
+        'faq.a4': 'Yes, with SLAs, monitoring and continuous improvements. We manage roadmap and technical debt.'
+      }
+    };
     function applyI18n(lang){
       const dict = I18N[lang] || I18N.es; document.documentElement.lang = lang;
       document.querySelectorAll('[data-i18n]').forEach(el=>{ const key = el.getAttribute('data-i18n'); if(dict[key]) el.textContent = dict[key]; });
