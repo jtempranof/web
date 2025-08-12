@@ -223,6 +223,86 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
   #equipo .section-head + *,
   #ventajas .section-head + *{ margin-top:16px; }
 }
+
+  /* ------------------------------------------------------------------
+     Additional mobile-specific styles for improved readability and UX
+     These rules override some defaults to enhance the layout on small
+     screens (≤ 640px). We introduce slightly larger type sizes,
+     increased padding for interactive areas, and more generous line
+     heights. Placing this block at the end ensures higher specificity.
+  ------------------------------------------------------------------ */
+  @media (max-width:640px){
+    /* Base font and line-height for the entire page */
+    body{
+      font-size:16px;
+      line-height:1.45;
+    }
+    /* Headings maintain comfortable spacing */
+    h1, h2, h3, h4, h5, h6{
+      line-height:1.3;
+    }
+    /* Hero headline larger but constrained for narrow widths */
+    .hero h1{
+      font-size:clamp(32px,8vw,44px);
+    }
+    /* Hero description readability */
+    .hero p{
+      font-size:16px;
+      line-height:1.5;
+      margin-top:8px;
+    }
+    /* Section title slightly bigger */
+    .section-title{
+      font-size:14px;
+    }
+    /* Card heading and copy sizes */
+    .card h3{
+      font-size:18px;
+    }
+    .card p{
+      font-size:14px;
+      line-height:1.5;
+    }
+    .card .list li{
+      font-size:14px;
+      line-height:1.5;
+    }
+    /* Navigation items: larger targets for touch */
+    .nav nav a{
+      font-size:16px;
+      padding:12px 14px;
+    }
+    /* FAQ headings and toggles */
+    .faq h3{
+      font-size:16px;
+    }
+    .faq .faq-q{
+      padding:12px 0;
+    }
+    .faq span{
+      font-size:20px;
+    }
+    /* Contact card typography */
+    .contact .card h3{
+      font-size:18px;
+    }
+    .contact .card p,
+    .contact .card li{
+      font-size:14px;
+      line-height:1.5;
+    }
+    /* Form inputs and selects: avoid auto-zoom and improve legibility */
+    #lead-form input,
+    #lead-form textarea,
+    #lead-form select{
+      font-size:16px;
+    }
+    /* Chips slightly larger for easier tapping */
+    .chip{
+      font-size:13px;
+      padding:6px 10px;
+    }
+  }
 </style>
 </head>
 <body class="light">
@@ -619,17 +699,26 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
       btn.addEventListener('click', function(){
         var open = hdr.classList.toggle('open');
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        // Toggle icon between hamburger and close for better mobile UX
+        btn.textContent = open ? '✕' : '☰';
+        btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
       });
       nav.querySelectorAll('a').forEach(function(a){
         a.addEventListener('click', function(){
           hdr.classList.remove('open');
           btn.setAttribute('aria-expanded','false');
+          // Reset icon when closing via nav link
+          btn.textContent = '☰';
+          btn.setAttribute('aria-label', 'Abrir menú');
         });
       });
       document.addEventListener('keydown', function(e){
         if(e.key==='Escape'){
           hdr.classList.remove('open');
           btn.setAttribute('aria-expanded','false');
+          // Reset icon when closing via Escape key
+          btn.textContent = '☰';
+          btn.setAttribute('aria-label', 'Abrir menú');
         }
       });
     })();
