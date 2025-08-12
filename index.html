@@ -335,6 +335,45 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
       padding-right:14px;
     }
   }
+  /*
+   * HubSpot-inspired light palette and section backgrounds
+   * These rules override earlier light theme definitions to ensure we
+   * use only the soft cream and light coral tones found on HubSpot's
+   * landing pages. Placed near the end of the stylesheet for higher
+   * specificity.
+   */
+  body.light{
+    --bg:#FFF1EE;
+    --panel:#FFFFFF;
+    --text:#33475B;
+    --muted:#7A8AA1;
+    --brand:#FF7A59;
+    --brand2:#FF9679;
+    --shadow:0 10px 30px rgba(255,122,89,.14), 0 6px 12px rgba(51,71,91,.10);
+    --radius:20px;
+  }
+  /* Two-tone section backgrounds: cream and very light coral */
+  body.light #servicios,
+  body.light #contacto,
+  body.light #proceso{
+    background:#FFF6F3;
+    border-top:1px solid rgba(255,122,89,.2);
+    border-bottom:1px solid rgba(255,122,89,.2);
+  }
+  body.light #equipo,
+  body.light #ventajas,
+  body.light #faq{
+    background:#FFF1EE;
+    border-top:1px solid rgba(255,122,89,.2);
+    border-bottom:1px solid rgba(255,122,89,.2);
+  }
+  /* Adjust hero floating colours to match the coral palette */
+  body.light .f1{
+    background:radial-gradient(circle at 30% 30%, rgba(255,122,89,.6), transparent 60%);
+  }
+  body.light .f2{
+    background:radial-gradient(circle at 70% 70%, rgba(255,150,121,.6), transparent 60%);
+  }
 </style>
 </head>
 <body class="light">
@@ -437,7 +476,7 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
             <li>Prototipos clicables y tests</li>
             <li>Plan de escalado y evolución</li>
           </ul>
-          <div class="chips"><span class="chip">Lean</span><span class="chip">UX Research</span><span class="chip">Analytics</span></div>
+          <div class="chips"><span class="chip">Agile</span><span class="chip">Prototyping</span><span class="chip">Testing</span></div>
         </article>
       </div>
     </div>
