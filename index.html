@@ -335,44 +335,43 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
       padding-right:14px;
     }
   }
-  /*
-   * HubSpot-inspired light palette and section backgrounds
-   * These rules override earlier light theme definitions to ensure we
-   * use only the soft cream and light coral tones found on HubSpot's
-   * landing pages. Placed near the end of the stylesheet for higher
-   * specificity.
-   */
-  body.light{
-    --bg:#FFF1EE;
-    --panel:#FFFFFF;
-    --text:#33475B;
-    --muted:#7A8AA1;
-    --brand:#FF7A59;
-    --brand2:#FF9679;
-    --shadow:0 10px 30px rgba(255,122,89,.14), 0 6px 12px rgba(51,71,91,.10);
-    --radius:20px;
+  /* ------------------------------------------------------------------
+     Light theme: updated backgrounds and footer colours
+
+     - Hero section uses a subtle off‑white blue (#f6f9fc).
+     - Sections alternate between pure white and soft blue backgrounds.
+     - Footer in light mode adopts a dark blue tone (#192733) with white text.
+  ------------------------------------------------------------------ */
+  body.light .hero{
+    background:#f6f9fc;
   }
-  /* Two-tone section backgrounds: cream and very light coral */
+  /* White background for alternating sections */
   body.light #servicios,
-  body.light #contacto,
-  body.light #proceso{
-    background:#FFF6F3;
-    border-top:1px solid rgba(255,122,89,.2);
-    border-bottom:1px solid rgba(255,122,89,.2);
-  }
-  body.light #equipo,
   body.light #ventajas,
   body.light #faq{
-    background:#FFF1EE;
-    border-top:1px solid rgba(255,122,89,.2);
-    border-bottom:1px solid rgba(255,122,89,.2);
+    background:#ffffff;
+    border-top:1px solid rgba(15,23,42,.05);
+    border-bottom:1px solid rgba(15,23,42,.05);
   }
-  /* Adjust hero floating colours to match the coral palette */
-  body.light .f1{
-    background:radial-gradient(circle at 30% 30%, rgba(255,122,89,.6), transparent 60%);
+  /* Soft blue background for alternating sections */
+  body.light #equipo,
+  body.light #proceso,
+  body.light #contacto{
+    background:#eaf0f6;
+    border-top:1px solid rgba(15,23,42,.05);
+    border-bottom:1px solid rgba(15,23,42,.05);
   }
-  body.light .f2{
-    background:radial-gradient(circle at 70% 70%, rgba(255,150,121,.6), transparent 60%);
+  /* Dark footer for light theme */
+  body.light footer{
+    background:#192733;
+    color:#ffffff;
+    border-top:none;
+  }
+  body.light footer a{
+    color:#ffffff;
+  }
+  body.light footer a:hover{
+    text-decoration:underline;
   }
 </style>
 </head>
@@ -476,6 +475,7 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
             <li>Prototipos clicables y tests</li>
             <li>Plan de escalado y evolución</li>
           </ul>
+          <!-- Updated MVP chips: emphasise agility, prototyping and testing -->
           <div class="chips"><span class="chip">Agile</span><span class="chip">Prototyping</span><span class="chip">Testing</span></div>
         </article>
       </div>
