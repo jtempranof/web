@@ -419,7 +419,7 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
   <section id="servicios" class="services">
     <div class="container">
       <div class="section-head">
-        <h2 class="section-title reveal" data-anim="up">Servicios</h2>
+        <h2 class="section-title reveal" data-anim="up" data-i18n="section.services">Servicios</h2>
       </div>
       <div class="grid grid-4">
         <article class="card reveal" data-anim="zoom" data-tilt style="--accent:#5aa9ff">
@@ -429,9 +429,9 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
           <h3 data-i18n="services.backend.h3">Desarrollo Backend</h3>
           <p data-i18n="services.backend.p">APIs seguras, microservicios y cloud de alto rendimiento con observabilidad y CI/CD.</p>
           <ul class="list">
-            <li>APIs REST/GraphQL con contratos claros</li>
-            <li>Microservicios con mensajería</li>
-            <li>Infra como código y despliegues seguros</li>
+            <li data-i18n="services.backend.li1">APIs REST/GraphQL con contratos claros</li>
+            <li data-i18n="services.backend.li2">Microservicios con mensajería</li>
+            <li data-i18n="services.backend.li3">Infra como código y despliegues seguros</li>
           </ul>
           <div class="chips"><span class="chip">.NET</span><span class="chip">Node.js</span><span class="chip">AWS/Azure</span></div>
         </article>
@@ -443,9 +443,9 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
           <h3 data-i18n="services.ml.h3">IA y Machine Learning</h3>
           <p data-i18n="services.ml.p">Modelos predictivos, visión y NLP. Del prototipo a producción con MLOps.</p>
           <ul class="list">
-            <li>Predicción, clasificación y recomendación</li>
-            <li>RAG con embeddings y bases vectoriales</li>
-            <li>Serving en tiempo real y monitoreo</li>
+            <li data-i18n="services.ml.li1">Predicción, clasificación y recomendación</li>
+            <li data-i18n="services.ml.li2">RAG con embeddings y bases vectoriales</li>
+            <li data-i18n="services.ml.li3">Serving en tiempo real y monitoreo</li>
           </ul>
           <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Vector DB</span></div>
         </article>
@@ -457,9 +457,9 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
           <h3 data-i18n="services.auto.h3">Automatizaciones</h3>
           <p data-i18n="services.auto.p">Integraciones, bots y flujos sin fricción para reducir costes y errores.</p>
           <ul class="list">
-            <li>Integraciones con ERP/CRM y APIs</li>
-            <li>ETL/ELT y data pipelines fiables</li>
-            <li>Alertas y reportes automáticos</li>
+            <li data-i18n="services.auto.li1">Integraciones con ERP/CRM y APIs</li>
+            <li data-i18n="services.auto.li2">ETL/ELT y data pipelines fiables</li>
+            <li data-i18n="services.auto.li3">Alertas y reportes automáticos</li>
           </ul>
           <div class="chips"><span class="chip">n8n</span><span class="chip">Make</span><span class="chip">Zapier</span></div>
         </article>
@@ -471,12 +471,16 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
           <h3 data-i18n="services.mvp.h3">Creación de MVPs</h3>
           <p data-i18n="services.mvp.p">Validación rápida con roadmap claro y métricas desde el día uno.</p>
           <ul class="list">
-            <li>Discovery enfocado en impacto</li>
-            <li>Prototipos clicables y tests</li>
-            <li>Plan de escalado y evolución</li>
+            <li data-i18n="services.mvp.li1">Discovery enfocado en impacto</li>
+            <li data-i18n="services.mvp.li2">Prototipos clicables y tests</li>
+            <li data-i18n="services.mvp.li3">Plan de escalado y evolución</li>
           </ul>
           <!-- Updated MVP chips: emphasise agility, prototyping and testing -->
-          <div class="chips"><span class="chip">Agile</span><span class="chip">Prototyping</span><span class="chip">Testing</span></div>
+          <div class="chips">
+            <span class="chip" data-i18n="services.mvp.agile">Agile</span>
+            <span class="chip" data-i18n="services.mvp.prototyping">Prototyping</span>
+            <span class="chip" data-i18n="services.mvp.testing">Testing</span>
+          </div>
         </article>
       </div>
     </div>
@@ -486,21 +490,23 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
   <section id="equipo" class="about">
     <div class="container">
       <div class="section-head">
-        <h2 class="section-title reveal" data-anim="up">Quiénes somos</h2>
+        <h2 class="section-title reveal" data-anim="up" data-i18n="section.team">Quiénes somos</h2>
       </div>
       <div class="body reveal stack-lg" data-anim="zoom">
         <h3 data-i18n="about.h3">Cómo trabajamos</h3>
         <p data-i18n="about.p1">Más de una década lanzando y escalando productos en transporte, turismo, deporte, finanzas y medicina. Empezamos por el problema, definimos métricas de éxito y entregamos valor desde el primer sprint. Prácticas: code reviews, testing, seguridad por diseño, observabilidad y documentación viva.</p>
-        <p><strong>Nuestra misión:</strong> convertir ideas en soluciones fiables que impacten el negocio en semanas, no meses.</p>
+        <!-- Separar la misión en dos elementos para permitir traducción del texto y del título -->
+        <p><strong data-i18n="about.mission_label">Nuestra misión:</strong> <span data-i18n="about.mission_text">convertir ideas en soluciones fiables que impacten el negocio en semanas, no meses.</span></p>
         <div class="grid">
           <div>
             <h4 data-i18n="about.practices">Nuestras prácticas</h4>
             <ul class="list">
-              <li>Arquitecturas escalables y resilientes</li>
-              <li>CI/CD, IaC y MLOps</li>
-              <li>Comunicación transparente y demos frecuentes</li>
-              <li>Soporte y evolución post‑lanzamiento</li>
-            <li>Metodología agile con sprints cortos y adaptables</li></ul>
+              <li data-i18n="about.li1">Arquitecturas escalables y resilientes</li>
+              <li data-i18n="about.li2">CI/CD, IaC y MLOps</li>
+              <li data-i18n="about.li3">Comunicación transparente y demos frecuentes</li>
+              <li data-i18n="about.li4">Soporte y evolución post‑lanzamiento</li>
+              <li data-i18n="about.li5">Metodología agile con sprints cortos y adaptables</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -511,24 +517,24 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
   <section id="ventajas" class="why-us">
     <div class="container">
       <div class="section-head">
-        <h2 class="section-title reveal" data-anim="up">Por qué elegirnos</h2>
+        <h2 class="section-title reveal" data-anim="up" data-i18n="section.why">Por qué elegirnos</h2>
       </div>
       <div class="grid grid-4 why-tiles">
         <div class="tile-square reveal" data-anim="zoom" data-tilt style="--bg:url('images/why-senior.jpg')" tabindex="0">
-          <h3>Equipo senior 100%</h3>
-          <div class="tile-hover">Arquitectos y devs senior al frente: menos retrabajo, decisiones acertadas y entrega estable desde el primer sprint.</div>
+          <h3 data-i18n="why.t1.title">Equipo senior 100%</h3>
+          <div class="tile-hover" data-i18n="why.t1.desc">Arquitectos y devs senior al frente: menos retrabajo, decisiones acertadas y entrega estable desde el primer sprint.</div>
         </div>
         <div class="tile-square reveal" data-anim="zoom" data-tilt style="--bg:url('images/why-speed.jpg')" tabindex="0">
-          <h3>Inicio rápido</h3>
-          <div class="tile-hover">Kickoff en 5 días; entorno listo en la semana 1 y primeras entregas útiles en 2–3 semanas para validar cuanto antes.</div>
+          <h3 data-i18n="why.t2.title">Inicio rápido</h3>
+          <div class="tile-hover" data-i18n="why.t2.desc">Kickoff en 5 días; entorno listo en la semana 1 y primeras entregas útiles en 2–3 semanas para validar cuanto antes.</div>
         </div>
         <div class="tile-square reveal" data-anim="zoom" data-tilt style="--bg:url('images/why-transparency.jpg')" tabindex="0">
-          <h3>Transparencia y previsibilidad</h3>
-          <div class="tile-hover">Coste por fases, roadmaps claros y demos quincenales con métricas compartidas para que siempre sepas dónde estás.</div>
+          <h3 data-i18n="why.t3.title">Transparencia y previsibilidad</h3>
+          <div class="tile-hover" data-i18n="why.t3.desc">Coste por fases, roadmaps claros y demos quincenales con métricas compartidas para que siempre sepas dónde estás.</div>
         </div>
         <div class="tile-square reveal" data-anim="zoom" data-tilt style="--bg:url('images/why-ownership.jpg')" tabindex="0">
-          <h3>Propiedad total (sin lock‑in)</h3>
-          <div class="tile-hover">Código en tu repo, Infraestructura como Código y documentación completa. Puedes seguir sin nosotros cuando quieras.</div>
+          <h3 data-i18n="why.t4.title">Propiedad total (sin lock‑in)</h3>
+          <div class="tile-hover" data-i18n="why.t4.desc">Código en tu repo, Infraestructura como Código y documentación completa. Puedes seguir sin nosotros cuando quieras.</div>
         </div>
       </div>
     </div>
@@ -538,7 +544,7 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
   <section id="proceso" class="process">
     <div class="container">
       <div class="section-head">
-        <h2 class="section-title reveal" data-anim="up">Proceso</h2>
+        <h2 class="section-title reveal" data-anim="up" data-i18n="section.process">Proceso</h2>
       </div>
       <div class="process-grid grid">
         <div>
@@ -547,10 +553,10 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
               <div class="dot">1</div>
               <div>
                 <h4 data-i18n="process.s1">Descubrimiento</h4>
-                <p>Llamada inicial y objetivos.</p>
+                <p data-i18n="process.s1.desc">Llamada inicial y objetivos.</p>
                 <ul class="list">
-                  <li>Stakeholders y restricciones</li>
-                  <li>Hipótesis y métricas de éxito</li>
+                  <li data-i18n="process.s1.li1">Stakeholders y restricciones</li>
+                  <li data-i18n="process.s1.li2">Hipótesis y métricas de éxito</li>
                 </ul>
               </div>
             </div>
@@ -558,10 +564,10 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
               <div class="dot">2</div>
               <div>
                 <h4 data-i18n="process.s2">Propuesta</h4>
-                <p>Alcance, roadmap y presupuesto.</p>
+                <p data-i18n="process.s2.desc">Alcance, roadmap y presupuesto.</p>
                 <ul class="list">
-                  <li>Arquitectura inicial</li>
-                  <li>Riesgos y mitigaciones</li>
+                  <li data-i18n="process.s2.li1">Arquitectura inicial</li>
+                  <li data-i18n="process.s2.li2">Riesgos y mitigaciones</li>
                 </ul>
               </div>
             </div>
@@ -569,10 +575,10 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
               <div class="dot">3</div>
               <div>
                 <h4 data-i18n="process.s3">Construcción</h4>
-                <p>Iteraciones cortas con demos.</p>
+                <p data-i18n="process.s3.desc">Iteraciones cortas con demos.</p>
                 <ul class="list">
-                  <li>Sprints cortos</li>
-                  <li>Revisiones de código y QA</li>
+                  <li data-i18n="process.s3.li1">Sprints cortos</li>
+                  <li data-i18n="process.s3.li2">Revisiones de código y QA</li>
                 </ul>
               </div>
             </div>
@@ -580,10 +586,10 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
               <div class="dot">4</div>
               <div>
                 <h4 data-i18n="process.s4">Calidad</h4>
-                <p>Performance y seguridad.</p>
+                <p data-i18n="process.s4.desc">Performance y seguridad.</p>
                 <ul class="list">
-                  <li>Pruebas funcionales y carga</li>
-                  <li>Checklist de release y rollback</li>
+                  <li data-i18n="process.s4.li1">Pruebas funcionales y carga</li>
+                  <li data-i18n="process.s4.li2">Checklist de release y rollback</li>
                 </ul>
               </div>
             </div>
@@ -591,10 +597,10 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
               <div class="dot">5</div>
               <div>
                 <h4 data-i18n="process.s5">Entrega & soporte</h4>
-                <p>Lanzamiento, documentación y soporte continuo.</p>
+                <p data-i18n="process.s5.desc">Lanzamiento, documentación y soporte continuo.</p>
                 <ul class="list">
-                  <li>Handover y formación</li>
-                  <li>Monitoreo y evolución</li>
+                  <li data-i18n="process.s5.li1">Handover y formación</li>
+                  <li data-i18n="process.s5.li2">Monitoreo y evolución</li>
                 </ul>
               </div>
             </div>
@@ -628,12 +634,12 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
           <div class="faq-a"><p data-i18n="faq.a4">Sí, con SLAs, monitoreo y mejoras continuas. Gestionamos roadmap y deuda técnica.</p></div>
         </div>
         <div class="faq-item reveal" data-anim="left" data-tilt>
-          <div class="faq-q"><h3>¿Cuál es el coste de un proyecto típico?</h3><span>＋</span></div>
-          <div class="faq-a"><p>Depende del alcance y duración. Damos estimaciones cerradas por fase y presupuestos transparentes.</p></div>
+        <div class="faq-q"><h3 data-i18n="faq.q5">¿Cuál es el coste de un proyecto típico?</h3><span>＋</span></div>
+          <div class="faq-a"><p data-i18n="faq.a5">Depende del alcance y duración. Damos estimaciones cerradas por fase y presupuestos transparentes.</p></div>
         </div>
         <div class="faq-item reveal" data-anim="right" data-tilt>
-          <div class="faq-q"><h3>¿Cómo garantizan la seguridad de los datos?</h3><span>＋</span></div>
-          <div class="faq-a"><p>Seguridad por diseño, gestión de secretos, cifrado en tránsito/descanso y revisiones periódicas.</p></div>
+        <div class="faq-q"><h3 data-i18n="faq.q6">¿Cómo garantizan la seguridad de los datos?</h3><span>＋</span></div>
+          <div class="faq-a"><p data-i18n="faq.a6">Seguridad por diseño, gestión de secretos, cifrado en tránsito/descanso y revisiones periódicas.</p></div>
         </div>
       </div>
     </div>
@@ -643,27 +649,27 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
   <section id="contacto" class="contact">
     <div class="container">
       <div class="section-head">
-        <h2 class="section-title reveal" data-anim="up">Contacto</h2>
+        <h2 class="section-title reveal" data-anim="up" data-i18n="section.contact">Contacto</h2>
       </div>
       <div class="grid grid-2">
         <form id="lead-form" class="card reveal stack-lg" data-anim="left" aria-label="Formulario de contacto" method="post" action="/api/lead" data-endpoint="/api/lead" novalidate>
-          <input name="name" placeholder="Nombre" required />
-          <input name="email" type="email" placeholder="Email" required />
-          <input name="company" placeholder="Empresa (opcional)" />
-          <textarea name="message" placeholder="Cuéntanos brevemente qué necesitas" required></textarea>
+          <input name="name" placeholder="Nombre" required data-i18n-placeholder="contact.name" />
+          <input name="email" type="email" placeholder="Email" required data-i18n-placeholder="contact.email" />
+          <input name="company" placeholder="Empresa (opcional)" data-i18n-placeholder="contact.company" />
+          <textarea name="message" placeholder="Cuéntanos brevemente qué necesitas" required data-i18n-placeholder="contact.message"></textarea>
           <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0">
-          <button class="cta" type="submit">Enviar consulta</button>
+          <button class="cta" type="submit" data-i18n="contact.submit">Enviar consulta</button>
           <p class="chip" id="form-msg" role="status" aria-live="polite"></p>
         </form>
         <div class="card reveal stack-lg" data-anim="right">
-          <h3>También por aquí</h3>
-          <p><strong>Email:</strong> <a href="mailto:info@coreedge.dev">info@coreedge.dev</a></p>
-          <p>Teléfono: <a href="tel:+34645194198">+34 645 19 41 98</a></p>
-          <p>Madrid · Vigo · Málaga — remoto e in situ.</p>
-          <a class="btn whatsapp" href="https://wa.me/34645194198?text=Hola%20Core%20Edge%2C%20me%20gustar%C3%ADa%20hacer%20una%20consulta" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">Escríbenos por WhatsApp</a>
+          <h3 data-i18n="contact.other.h3">También por aquí</h3>
+          <p><strong data-i18n="contact.email_label">Email:</strong> <a href="mailto:info@coreedge.dev">info@coreedge.dev</a></p>
+          <p><span data-i18n="contact.phone_label">Teléfono:</span> <a href="tel:+34645194198">+34 645 19 41 98</a></p>
+          <p data-i18n="contact.location">Madrid · Vigo · Málaga — remoto e in situ.</p>
+          <a class="btn whatsapp" href="https://wa.me/34645194198?text=Hola%20Core%20Edge%2C%20me%20gustar%C3%ADa%20hacer%20una%20consulta" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" data-i18n="contact.whatsapp">Escríbenos por WhatsApp</a>
           <ul>
-            <li>Respuesta media &lt; 1 día laborable</li>
-            <li>Envíanos voz, texto o documentos</li>
+            <li data-i18n="contact.response">Respuesta media &lt; 1 día laborable</li>
+            <li data-i18n="contact.voice">Envíanos voz, texto o documentos</li>
           </ul>
         </div>
       </div>
@@ -672,8 +678,8 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
 
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-      <p>© <span id="year"></span> <span>Core Edge Solutions</span>. <span>Todos los derechos reservados.</span></p>
-      <p><a href="#">Privacidad</a> · <a href="#">Términos</a></p>
+      <p>© <span id="year"></span> <span data-i18n="brand">Core Edge Solutions</span>. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+      <p><a href="#" data-i18n="footer.privacy">Privacidad</a> · <a href="#" data-i18n="footer.terms">Términos</a></p>
     </div>
   </footer>
 
@@ -767,6 +773,75 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
         'faq.a3': 'Sí, como equipo dedicado o extendiendo el tuyo, con prácticas compartidas y herramientas estándar.',
         'faq.q4': '¿Ofrecen mantenimiento?',
         'faq.a4': 'Sí, con SLAs, monitoreo y mejoras continuas. Gestionamos roadmap y deuda técnica.'
+        , 'faq.q5': '¿Cuál es el coste de un proyecto típico?'
+        , 'faq.a5': 'Depende del alcance y duración. Damos estimaciones cerradas por fase y presupuestos transparentes.'
+        , 'faq.q6': '¿Cómo garantizan la seguridad de los datos?'
+        , 'faq.a6': 'Seguridad por diseño, gestión de secretos, cifrado en tránsito/descanso y revisiones periódicas.'
+        , 'services.mvp.agile': 'Agile'
+        , 'services.mvp.prototyping': 'Prototipado'
+        , 'services.mvp.testing': 'Testing'
+        , 'contact.name': 'Nombre'
+        , 'contact.email': 'Email'
+        , 'contact.company': 'Empresa (opcional)'
+        , 'contact.message': 'Cuéntanos brevemente qué necesitas'
+        , 'contact.submit': 'Enviar consulta'
+        , 'section.services': 'Servicios'
+        , 'section.team': 'Quiénes somos'
+        , 'section.why': 'Por qué elegirnos'
+        , 'section.process': 'Proceso'
+        , 'section.contact': 'Contacto'
+        , 'services.backend.li1': 'APIs REST/GraphQL con contratos claros'
+        , 'services.backend.li2': 'Microservicios con mensajería'
+        , 'services.backend.li3': 'Infra como código y despliegues seguros'
+        , 'services.ml.li1': 'Predicción, clasificación y recomendación'
+        , 'services.ml.li2': 'RAG con embeddings y bases vectoriales'
+        , 'services.ml.li3': 'Serving en tiempo real y monitoreo'
+        , 'services.auto.li1': 'Integraciones con ERP/CRM y APIs'
+        , 'services.auto.li2': 'ETL/ELT y data pipelines fiables'
+        , 'services.auto.li3': 'Alertas y reportes automáticos'
+        , 'services.mvp.li1': 'Discovery enfocado en impacto'
+        , 'services.mvp.li2': 'Prototipos clicables y tests'
+        , 'services.mvp.li3': 'Plan de escalado y evolución'
+        , 'about.li1': 'Arquitecturas escalables y resilientes'
+        , 'about.li2': 'CI/CD, IaC y MLOps'
+        , 'about.li3': 'Comunicación transparente y demos frecuentes'
+        , 'about.li4': 'Soporte y evolución post‑lanzamiento'
+        , 'about.li5': 'Metodología agile con sprints cortos y adaptables'
+        , 'about.mission_label': 'Nuestra misión:'
+        , 'about.mission_text': 'convertir ideas en soluciones fiables que impacten el negocio en semanas, no meses.'
+        , 'why.t1.title': 'Equipo senior 100%'
+        , 'why.t1.desc': 'Arquitectos y devs senior al frente: menos retrabajo, decisiones acertadas y entrega estable desde el primer sprint.'
+        , 'why.t2.title': 'Inicio rápido'
+        , 'why.t2.desc': 'Kickoff en 5 días; entorno listo en la semana 1 y primeras entregas útiles en 2–3 semanas para validar cuanto antes.'
+        , 'why.t3.title': 'Transparencia y previsibilidad'
+        , 'why.t3.desc': 'Coste por fases, roadmaps claros y demos quincenales con métricas compartidas para que siempre sepas dónde estás.'
+        , 'why.t4.title': 'Propiedad total (sin lock‑in)'
+        , 'why.t4.desc': 'Código en tu repo, Infraestructura como Código y documentación completa. Puedes seguir sin nosotros cuando quieras.'
+        , 'process.s1.desc': 'Llamada inicial y objetivos.'
+        , 'process.s1.li1': 'Stakeholders y restricciones'
+        , 'process.s1.li2': 'Hipótesis y métricas de éxito'
+        , 'process.s2.desc': 'Alcance, roadmap y presupuesto.'
+        , 'process.s2.li1': 'Arquitectura inicial'
+        , 'process.s2.li2': 'Riesgos y mitigaciones'
+        , 'process.s3.desc': 'Iteraciones cortas con demos.'
+        , 'process.s3.li1': 'Sprints cortos'
+        , 'process.s3.li2': 'Revisiones de código y QA'
+        , 'process.s4.desc': 'Performance y seguridad.'
+        , 'process.s4.li1': 'Pruebas funcionales y carga'
+        , 'process.s4.li2': 'Checklist de release y rollback'
+        , 'process.s5.desc': 'Lanzamiento, documentación y soporte continuo.'
+        , 'process.s5.li1': 'Handover y formación'
+        , 'process.s5.li2': 'Monitoreo y evolución'
+        , 'contact.other.h3': 'También por aquí'
+        , 'contact.email_label': 'Email:'
+        , 'contact.phone_label': 'Teléfono:'
+        , 'contact.location': 'Madrid · Vigo · Málaga — remoto e in situ.'
+        , 'contact.whatsapp': 'Escríbenos por WhatsApp'
+        , 'contact.response': 'Respuesta media < 1 día laborable'
+        , 'contact.voice': 'Envíanos voz, texto o documentos'
+        , 'footer.rights': 'Todos los derechos reservados.'
+        , 'footer.privacy': 'Privacidad'
+        , 'footer.terms': 'Términos'
       },
       en: {
         brand: 'Core Edge Solutions',
@@ -805,6 +880,75 @@ body.light .why-tiles .tile-square h3{border-color:rgba(15,23,42,.15);background
         'faq.a3': 'Yes, as a dedicated team or extending yours, with shared practices and standard tools.',
         'faq.q4': 'Do you offer maintenance?',
         'faq.a4': 'Yes, with SLAs, monitoring and continuous improvements. We manage roadmap and technical debt.'
+        , 'faq.q5': 'What is the cost of a typical project?'
+        , 'faq.a5': 'It depends on the scope and duration. We provide fixed estimates per phase and transparent budgets.'
+        , 'faq.q6': 'How do you guarantee data security?'
+        , 'faq.a6': 'Security by design, secrets management, encryption in transit/at rest and periodic reviews.'
+        , 'services.mvp.agile': 'Agile'
+        , 'services.mvp.prototyping': 'Prototyping'
+        , 'services.mvp.testing': 'Testing'
+        , 'contact.name': 'Name'
+        , 'contact.email': 'Email'
+        , 'contact.company': 'Company (optional)'
+        , 'contact.message': 'Tell us briefly what you need'
+        , 'contact.submit': 'Send request'
+        , 'section.services': 'Services'
+        , 'section.team': 'Who we are'
+        , 'section.why': 'Why choose us'
+        , 'section.process': 'Process'
+        , 'section.contact': 'Contact'
+        , 'services.backend.li1': 'REST/GraphQL APIs with clear contracts'
+        , 'services.backend.li2': 'Microservices with messaging'
+        , 'services.backend.li3': 'Infrastructure as code and secure deployments'
+        , 'services.ml.li1': 'Prediction, classification and recommendation'
+        , 'services.ml.li2': 'RAG with embeddings and vector databases'
+        , 'services.ml.li3': 'Real-time serving and monitoring'
+        , 'services.auto.li1': 'Integrations with ERP/CRM and APIs'
+        , 'services.auto.li2': 'ETL/ELT and reliable data pipelines'
+        , 'services.auto.li3': 'Automated alerts and reporting'
+        , 'services.mvp.li1': 'Discovery focused on impact'
+        , 'services.mvp.li2': 'Clickable prototypes and tests'
+        , 'services.mvp.li3': 'Scale-up plan and evolution'
+        , 'about.li1': 'Scalable and resilient architectures'
+        , 'about.li2': 'CI/CD, IaC and MLOps'
+        , 'about.li3': 'Transparent communication and frequent demos'
+        , 'about.li4': 'Post-launch support and evolution'
+        , 'about.li5': 'Agile methodology with short and adaptable sprints'
+        , 'about.mission_label': 'Our mission:'
+        , 'about.mission_text': 'to turn ideas into reliable solutions that impact the business in weeks, not months.'
+        , 'why.t1.title': '100% senior team'
+        , 'why.t1.desc': 'Senior architects and developers at the helm: less rework, better decisions and stable delivery from the first sprint.'
+        , 'why.t2.title': 'Fast start'
+        , 'why.t2.desc': 'Kickoff in 5 days; environment ready in week 1 and first useful deliverables in 2–3 weeks to validate as soon as possible.'
+        , 'why.t3.title': 'Transparency and predictability'
+        , 'why.t3.desc': 'Phase-based cost, clear roadmaps and fortnightly demos with shared metrics so you always know where you are.'
+        , 'why.t4.title': 'Full ownership (no lock-in)'
+        , 'why.t4.desc': 'Code in your repo, Infrastructure as Code and complete documentation. You can continue without us whenever you want.'
+        , 'process.s1.desc': 'Initial call and objectives.'
+        , 'process.s1.li1': 'Stakeholders and constraints'
+        , 'process.s1.li2': 'Hypotheses and success metrics'
+        , 'process.s2.desc': 'Scope, roadmap and budget.'
+        , 'process.s2.li1': 'Initial architecture'
+        , 'process.s2.li2': 'Risks and mitigations'
+        , 'process.s3.desc': 'Short iterations with demos.'
+        , 'process.s3.li1': 'Short sprints'
+        , 'process.s3.li2': 'Code reviews and QA'
+        , 'process.s4.desc': 'Performance and security.'
+        , 'process.s4.li1': 'Functional and load tests'
+        , 'process.s4.li2': 'Release and rollback checklist'
+        , 'process.s5.desc': 'Launch, documentation and continuous support.'
+        , 'process.s5.li1': 'Handover and training'
+        , 'process.s5.li2': 'Monitoring and evolution'
+        , 'contact.other.h3': 'Also through here'
+        , 'contact.email_label': 'Email:'
+        , 'contact.phone_label': 'Phone:'
+        , 'contact.location': 'Madrid · Vigo · Málaga — remote and on‑site.'
+        , 'contact.whatsapp': 'Write to us on WhatsApp'
+        , 'contact.response': 'Average response < 1 business day'
+        , 'contact.voice': 'Send us voice, text or documents'
+        , 'footer.rights': 'All rights reserved.'
+        , 'footer.privacy': 'Privacy'
+        , 'footer.terms': 'Terms'
       }
     };
     function applyI18n(lang){
