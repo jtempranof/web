@@ -8,7 +8,33 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" href="images/icon.png" type="image/png" sizes="32x32">
+  <!-- Canonical -->
+	<link rel="canonical" href="https://www.lumestechnology.com/">
+	<!-- Internacionalización -->
+	<link rel="alternate" href="https://www.lumestechnology.com/" hreflang="es">
+	<link rel="alternate" href="https://www.lumestechnology.com/en/" hreflang="en">
+	<link rel="alternate" href="https://www.lumestechnology.com/pt/" hreflang="pt">
+	<link rel="alternate" href="https://www.lumestechnology.com/" hreflang="x-default">
+
+	<!-- Favicons -->
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="/images/icon-192.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	<link rel="mask-icon" href="/images/icon.svg" color="#0b1020">
+	<meta name="theme-color" content="#0b1020">
+
+	<!-- Open Graph / Twitter -->
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Lumes Technology">
+	<meta property="og:title" content="Lumes Technology — Backend, IA/ML, Automatización y MVPs">
+	<meta property="og:description" content="De la idea al producto en semanas. Backend, IA/ML, automatización y MVPs.">
+	<meta property="og:url" content="https://www.lumestechnology.com/">
+	<meta property="og:image" content="https://www.lumestechnology.com/images/og-cover.jpg">
+	<meta property="og:locale" content="es_ES">
+	<meta property="og:locale:alternate" content="en_US">
+	<meta property="og:locale:alternate" content="pt_PT">
+	<meta name="twitter:card" content="summary_large_image">
+	
   <style>
     :root{ --bg:#0b1020; --panel:#0f1530; --muted:#9aa3b2; --text:#e8ecf4; --brand:#5aa9ff; --brand2:#8b5cf6; --ok:#22c55e; --radius:20px; --shadow:0 10px 30px rgba(0,0,0,.25), 0 6px 12px rgba(18,25,45,.35); --dropdown-bg: rgba(30, 30, 30, 0.95);}
     *{box-sizing:border-box}
@@ -80,7 +106,7 @@
 	.logo.brand {
 	  display: inline-flex;
 	  align-items: center;
-
+	  gap: 4px;
 	  font-weight: 800;
 	  letter-spacing: .2px;
 	  white-space: nowrap;
@@ -89,7 +115,7 @@
 	}
 
 	.logo.brand img.logo-img {
-	  height: 35px;
+	  height: 45px;
 	  width: auto;
 	  border-radius: 6px; 
 	  display: block;
@@ -219,6 +245,7 @@
   footer{padding:20px 0}
   .language-switcher{gap:8px}
   .language-switcher select{padding:9px 38px 9px 12px}
+  .logo.brand img.logo-img { height: 35px;	}
 }
 
 /* === Full-bleed FAQ & Contact en móvil === */
@@ -372,6 +399,24 @@
     }
   }
 </style>
+	<script type="application/ld+json">
+	{
+	  "@context":"https://schema.org",
+	  "@type":"ProfessionalService",
+	  "name":"Lumes Technology",
+	  "url":"https://www.lumestechnology.com/",
+	  "image":"https://www.lumestechnology.com/images/og-cover.jpg",
+	  "telephone":"+34 645 19 41 98",
+	  "email":"info@lumestechnology.com",
+	  "areaServed":["ES","PT","EU"],
+	  "address":{"@type":"PostalAddress","addressCountry":"ES"},
+	  "sameAs":[
+		"https://www.linkedin.com/company/xxxx",
+		"https://github.com/jtempranof"
+	  ],
+	  "serviceType":["Backend","IA/ML","Automatización","MVPs"]
+	}
+	</script>
 </head>
 <body>
   <header class="nav">
@@ -1133,6 +1178,15 @@
         }
       });
     })();
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CDMN58Z6G4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+ 
+    gtag('config', 'G-CDMN58Z6G4');
   </script>
 </body>
 </html>
