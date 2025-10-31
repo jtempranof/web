@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Core Edge Solutions — Backend, IA/ML, Automatización y MVPs</title>
-  <meta name="description" content="Core Edge Solutions: expertos en backend, IA/ML, automatización y MVPs. De la idea al producto en semanas; experiencia en transporte, turismo, deporte, finanzas y medicina." />
+  <title>Lumes Technology — Backend, IA/ML, Automatización y MVPs</title>
+  <meta name="description" content="Lumes Technology: expertos en backend, IA/ML, automatización y MVPs. De la idea al producto en semanas; experiencia en transporte, turismo, deporte, finanzas y medicina." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -359,7 +359,7 @@
 <body>
   <header class="nav">
     <div class="container">
-      <a href="#" class="logo brand" data-i18n="brand">Core Edge Solutions</a>
+      <a href="#" class="logo brand" data-i18n="brand">Lumes Technology</a>
       <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">☰</button>
       <nav id="primary-nav" aria-label="Navegación principal">
         <a href="#servicios" data-i18n="nav.services">Servicios</a>
@@ -649,10 +649,10 @@
         </form>
         <div class="card reveal stack-lg" data-anim="right">
           <h3 data-i18n="contact.other.h3">También por aquí</h3>
-          <p><strong data-i18n="contact.email_label">Email:</strong> <a href="mailto:info@coreedge.dev">info@coreedge.dev</a></p>
+          <p><strong data-i18n="contact.email_label">Email:</strong> <a href="mailto:info@lumestechnology.com">info@lumestechnology.com</a></p>
           <p><span data-i18n="contact.phone_label">Teléfono:</span> <a href="tel:+34645194198">+34 645 19 41 98</a></p>
           <p data-i18n="contact.location">Madrid · Vigo · Málaga — remoto e in situ.</p>
-          <a class="btn whatsapp" href="https://wa.me/34645194198?text=Hola%20Core%20Edge%2C%20me%20gustar%C3%ADa%20hacer%20una%20consulta" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" data-i18n="contact.whatsapp">Escríbenos por WhatsApp</a>
+          <a class="btn whatsapp" href="https://wa.me/34645194198?text=Hola%20Lumes%20Technlogy%2C%20me%20gustar%C3%ADa%20hacer%20una%20consulta" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" data-i18n="contact.whatsapp">Escríbenos por WhatsApp</a>
           <ul>
             <li data-i18n="contact.response">Respuesta media &lt; 1 día laborable</li>
             <li data-i18n="contact.voice">Envíanos voz, texto o documentos</li>
@@ -664,7 +664,7 @@
 
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-      <p>© <span id="year"></span> <span data-i18n="brand">Core Edge Solutions</span>. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+      <p>© <span id="year"></span> <span data-i18n="brand">Lumes Technology</span>. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
       <p><a href="#" data-i18n="footer.privacy">Privacidad</a> · <a href="#" data-i18n="footer.terms">Términos</a></p>
     </div>
   </footer>
@@ -698,7 +698,7 @@
 
     const I18N = {
       es: {
-        brand: 'Core Edge Solutions',
+        brand: 'Lumes Technology',
         'hero.h1': 'Impulsamos tu proyecto con soluciones de software',
         'hero.p': 'Transformamos industrias con soluciones de desarrollo de backend, IA, aprendizaje automático y automatización de vanguardia, aprovechando nuestra diversa experiencia para obtener resultados.',
         'nav.services': 'Servicios',
@@ -805,7 +805,7 @@
         , 'footer.terms': 'Términos'
       },
       en: {
-        brand: 'Core Edge Solutions',
+        brand: 'Lumes Technology',
         'hero.h1': 'We accelerate your project with cutting‑edge software',
         'hero.p': 'We transform industries with cutting‑edge backend development, AI, machine learning and automation solutions, leveraging our diverse experience to achieve results.',
         'nav.services': 'Services',
@@ -912,7 +912,7 @@
         , 'footer.terms': 'Terms'
       },
 	  pt: {
-		brand: 'Core Edge Solutions',
+		brand: 'Lumes Technology',
 		'hero.h1': 'Impulsionamos o seu projeto com soluções de software',
 		'hero.p': 'Transformamos indústrias com soluções de desenvolvimento backend, IA, aprendizado de máquina e automação de ponta, aproveitando nossa experiência diversa para obter resultados.',
 		'nav.services': 'Serviços',
@@ -1077,7 +1077,7 @@
           const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
           if(!res.ok){ throw new Error('HTTP '+res.status); }
           setStatus('¡Gracias! Te contactaremos en menos de 24h laborables.'); form.reset();
-        }catch(err){ console.error(err); setStatus('No se pudo enviar. Inténtalo de nuevo o escribe a info@coreedge.dev', false);
+        }catch(err){ console.error(err); setStatus('No se pudo enviar. Inténtalo de nuevo o escribe a info@lumestechnology.com', false);
         }finally{ if(btn){ btn.disabled = false; btn.textContent = 'Enviar consulta'; } }
       });
     })();
